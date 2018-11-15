@@ -78,7 +78,7 @@ public class TextItem extends SlideItem {
 		return new Rectangle((int) (itemStyle.indent*scale), 0, xsize, ysize );
 	}
 
-	private List<TextLayout> getLayouts(Graphics g, float scale) {
+	public List<TextLayout> getLayouts(Graphics g, float scale) {
 		List<TextLayout> layouts = new ArrayList<TextLayout>();
 		AttributedString attrStr = getAttributedString(scale);
     	Graphics2D g2d = (Graphics2D) g;

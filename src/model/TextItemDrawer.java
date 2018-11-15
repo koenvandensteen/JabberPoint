@@ -22,14 +22,14 @@ public class TextItemDrawer extends ItemDrawerBridge {
 		public void draw(int x, int y, float scale, Graphics g, ImageObserver o, SlideItem text)
 	{
 		TextItem itemToDraw = (TextItem) text;	
-		
+	
 		Style myStyle = text.GetStyle();
 				
 			if (itemToDraw == null || itemToDraw.getText().length() == 0) {
 				return;
 			}
 			
-			List<TextLayout> layouts = getLayouts(g, myStyle, scale,itemToDraw.getText());
+			List<TextLayout> layouts =  itemToDraw.getLayouts(g,scale);
 			
 			Point pen = new Point(x + (int)(myStyle.indent * scale), 
 					y + (int) (myStyle.leading * scale));
@@ -47,32 +47,4 @@ public class TextItemDrawer extends ItemDrawerBridge {
 				pen.y += layout.getDescent();
 			}
 	}
-	
-	private List<TextLayout> getLayouts(Graphics g, Style s, float scale,String text) {
-		List<TextLayout> layouts = new ArrayList<TextLayout>();
-		
-		AttributedString attrStr = getAttributedString(s, scale, text);
-		
-    	Graphics2D g2d = (Graphics2D) g;
-    	
-    	FontRenderContext frc = g2d.getFontRenderContext();
-    	
-    	LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-    	
-    	float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
-    	
-    	while (measurer.getPosition() < text.length()) {
-    		TextLayout layout = measurer.nextLayout(wrappingWidth);
-    		layouts.add(layout);
-    	}
-    	
-    	return layouts;
-	}
-
-	// geef de AttributedString voor het item
-		public AttributedString getAttributedString(Style style, float scale, String text) {
-			AttributedString attrStr = new AttributedString(text);
-			attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
-			return attrStr;
-		}
 }
