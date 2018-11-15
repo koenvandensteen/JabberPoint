@@ -39,6 +39,7 @@ public class BitmapItem extends SlideItem {
 			System.err.println(FILE + imageName + NOTFOUND) ;
 		}
 		itemDrawer = new BitmapItemDrawer();
+		styleStrategy = new StyleDefault();
 	}
 
 // Een leeg bitmap-item
@@ -53,10 +54,10 @@ public class BitmapItem extends SlideItem {
 
 // geef de bounding box van de afbeelding
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
-		Style myStyle = Style.getStyle(getLevel());	
-		return new Rectangle((int) (myStyle.indent * scale), 0,
+	
+		return new Rectangle((int) (itemStyle.indent * scale), 0,
 				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + 
+				((int) (itemStyle.leading * scale)) + 
 				(int) (bufferedImage.getHeight(observer) * scale));
 	}
 

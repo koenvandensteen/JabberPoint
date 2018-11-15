@@ -22,17 +22,24 @@ public class TextItemDrawer extends ItemDrawerBridge {
 		public void draw(int x, int y, float scale, Graphics g, ImageObserver o, SlideItem text)
 	{
 		TextItem itemToDraw = (TextItem) text;	
-		Style myStyle = Style.getStyle(itemToDraw.getLevel());
+		
+		Style myStyle = text.GetStyle();
 				
 			if (itemToDraw == null || itemToDraw.getText().length() == 0) {
 				return;
 			}
+			
 			List<TextLayout> layouts = getLayouts(g, myStyle, scale,itemToDraw.getText());
+			
 			Point pen = new Point(x + (int)(myStyle.indent * scale), 
 					y + (int) (myStyle.leading * scale));
+			
 			Graphics2D g2d = (Graphics2D)g;
+			
 			g2d.setColor(myStyle.color);
+			
 			Iterator<TextLayout> it = layouts.iterator();
+			
 			while (it.hasNext()) {
 				TextLayout layout = it.next();
 				pen.y += layout.getAscent();
@@ -43,15 +50,22 @@ public class TextItemDrawer extends ItemDrawerBridge {
 	
 	private List<TextLayout> getLayouts(Graphics g, Style s, float scale,String text) {
 		List<TextLayout> layouts = new ArrayList<TextLayout>();
+		
 		AttributedString attrStr = getAttributedString(s, scale, text);
+		
     	Graphics2D g2d = (Graphics2D) g;
+    	
     	FontRenderContext frc = g2d.getFontRenderContext();
+    	
     	LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
+    	
     	float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+    	
     	while (measurer.getPosition() < text.length()) {
     		TextLayout layout = measurer.nextLayout(wrappingWidth);
     		layouts.add(layout);
     	}
+    	
     	return layouts;
 	}
 

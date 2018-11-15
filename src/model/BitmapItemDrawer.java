@@ -10,7 +10,7 @@ public class BitmapItemDrawer extends ItemDrawerBridge {
 	public void draw(int x, int y, float scale, Graphics g, ImageObserver observer, SlideItem item) {
 		// TODO Auto-generated method stub
 
-		Style myStyle = Style.getStyle(item.getLevel());	
+		Style myStyle = item.GetStyle();	
 		
 		int width = x + (int) (myStyle.indent * scale);
 		int height = y + (int) (myStyle.leading * scale);

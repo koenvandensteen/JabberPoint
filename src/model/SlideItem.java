@@ -3,6 +3,7 @@ import java.awt.Rectangle;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import model.ItemDrawerBridge;
+import model.Style;
 
 /** <p>De abstracte klasse voor een item op een Slide<p>
  * <p>Alle SlideItems hebben tekenfunctionaliteit.</p>
@@ -17,12 +18,25 @@ import model.ItemDrawerBridge;
 
 public abstract class SlideItem {
 	private int level = 0; // het level van het slideitem
-	protected ItemDrawerBridge itemDrawer;
+	protected Style itemStyle;
 	
+	protected ItemDrawerBridge itemDrawer;
+	protected StyleStrategy styleStrategy;
 	public SlideItem(int lev) {
 		level = lev;
 	}
 
+	public void SetItemStyle(Style style)
+	{
+		itemStyle = style;
+	}
+	
+	public Style GetStyle()
+	{
+		styleStrategy.SetStyle(this);
+		return itemStyle;
+	}
+	
 	public SlideItem() {
 		this(0);
 	}

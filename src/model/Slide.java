@@ -21,8 +21,6 @@ public class Slide {
 	protected TextItem title; // de titel wordt apart bewaard
 	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
 	
-	
-	
 	public Slide() {
 		items = new Vector<SlideItem>();
 	}
