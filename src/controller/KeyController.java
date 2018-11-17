@@ -1,7 +1,7 @@
 package controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
-import model.Presentation;
+import view.SlideViewer;
 
 
 /** <p>This is the KeyController (KeyListener)</p>
@@ -15,10 +15,16 @@ import model.Presentation;
 */
 
 public class KeyController extends KeyAdapter {
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
-
-	public KeyController(Presentation p) {
-		presentation = p;
+	//private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	private SlideViewer slideViewer;
+	//private Command command;
+	
+//	public KeyController(Presentation p) {
+//		presentation = p;
+//	}
+	
+	public KeyController(SlideViewer slideViewer){
+		this.slideViewer = slideViewer;
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
@@ -27,12 +33,12 @@ public class KeyController extends KeyAdapter {
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				presentation.nextSlide();
+				slideViewer.nextSlide();
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				presentation.prevSlide();
+				slideViewer.prevSlide();
 				break;
 			case 'q':
 			case 'Q':

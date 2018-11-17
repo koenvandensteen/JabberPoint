@@ -13,6 +13,7 @@ import model.Presentation;
 import model.Accessor;
 import model.XMLAccessor;
 import view.AboutBox;
+import view.SlideViewer;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -27,6 +28,7 @@ public class MenuController extends MenuBar {
 	
 	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
 	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	private SlideViewer slideViewer;
 	
 	private static final long serialVersionUID = 227L;
 	
@@ -50,19 +52,25 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, Presentation pres) {
+	//public MenuController(Frame frame, Presentation pres) {
+	public MenuController(Frame frame, SlideViewer slv, Presentation pres){
 		parent = frame;
 		presentation = pres;
+		System.out.println("hoe presentatie hier wegwerken?");
+		slideViewer = slv;
+		
 		MenuItem menuItem;
 		Menu fileMenu = new Menu(FILE);
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
+				//presentation.clear();
+				slideViewer.clear();
 				Accessor xmlAccessor = new XMLAccessor();
 				try {
 					xmlAccessor.loadFile(presentation, TESTFILE);
-					presentation.setSlideNumber(0);
+//					presentation.setSlideNumber(0);
+					slideViewer.setSlideNumber(0);
 				} catch (IOException exc) {
 					JOptionPane.showMessageDialog(parent, IOEX + exc, 
          			LOADERR, JOptionPane.ERROR_MESSAGE);
@@ -73,7 +81,8 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.clear();
+				//presentation.clear();
+				slideViewer.clear();
 				parent.repaint();
 			}
 		});
@@ -93,7 +102,8 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(EXIT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.exit(0);
+//				presentation.exit(0);
+				slideViewer.exit(0);
 			}
 		});
 		add(fileMenu);
@@ -101,13 +111,15 @@ public class MenuController extends MenuBar {
 		viewMenu.add(menuItem = mkMenuItem(NEXT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.nextSlide();
+				//presentation.nextSlide();
+				slideViewer.nextSlide();
 			}
 		});
 		viewMenu.add(menuItem = mkMenuItem(PREV));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				presentation.prevSlide();
+//				presentation.prevSlide();
+				slideViewer.prevSlide();
 			}
 		});
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
@@ -115,7 +127,8 @@ public class MenuController extends MenuBar {
 			public void actionPerformed(ActionEvent actionEvent) {
 				String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
 				int pageNumber = Integer.parseInt(pageNumberStr);
-				presentation.setSlideNumber(pageNumber - 1);
+				//presentation.setSlideNumber(pageNumber - 1);
+				slideViewer.setSlideNumber(pageNumber - 1);
 			}
 		});
 		add(viewMenu);
@@ -128,6 +141,8 @@ public class MenuController extends MenuBar {
 		});
 		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
 	}
+	
+	
 
 // een menu-item aanmaken
 	public MenuItem mkMenuItem(String name) {
