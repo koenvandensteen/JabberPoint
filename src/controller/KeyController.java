@@ -23,29 +23,61 @@ public class KeyController extends KeyAdapter {
 //		presentation = p;
 //	}
 	
+	Command nextSlideCommand = new CommandNextSlide(slideViewer);
+	Command prevSlideCommand = new CommandPreviousSlide(slideViewer);
+	//not used with KeyController
+	//Command slideNumCommand = new CommandSlideByNumber(slideViewer);
+	Command nextItemCommand = new CommandNextItem(slideViewer);
+	Command prevItemCommand = new CommandPreviousItem(slideViewer);
+	Command allItemsCommand = new CommandShowAllItems(slideViewer);
+	Command exitCommand = new CommandExit(slideViewer);	
+	
 	public KeyController(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
+		
+		Command selectedCommand = null;
+		
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				slideViewer.nextSlide();
+				//next item / next slide (if all items shown)
+				selectedCommand = nextItemCommand;
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				slideViewer.prevSlide();
+				//previous item / previous slide (if no items shown)
+				selectedCommand = prevItemCommand;
 				break;
 			case 'q':
 			case 'Q':
-				System.exit(0);
+				//exit the application
+				selectedCommand = exitCommand;
+				break;
+			case KeyEvent.VK_RIGHT:
+				//next slide, all items
+				selectedCommand = nextSlideCommand;
+				break;
+			case KeyEvent.VK_LEFT:
+				//previous slide, all items
+				selectedCommand = prevSlideCommand;
+				break;
+			case KeyEvent.VK_A:
+				//show all
+				selectedCommand = allItemsCommand;
 				break; // wordt nooit bereikt als het goed is
 			default:
+				//indien toch bereikt gaan we voor een propere exit
+				selectedCommand = exitCommand;
 				break;
 		}
+		
+		CommandInvoker.executeCommand(selectedCommand);
+		
 	}
 }

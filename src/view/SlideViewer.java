@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JOptionPane;
+
 import model.Presentation;
 
 public class SlideViewer {
@@ -47,11 +49,33 @@ private Presentation presentation;
 		}
 	}
 	
+	public void goToSlideNR(){
+		String PAGENR = "Page number?";		
+		String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
+		int pageNumber = Integer.parseInt(pageNumberStr);
+		setSlideNumber(pageNumber - 1);
+	}
+	
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
 		presentation.clear();
 	}
 	
+	// Geeft alle items in één keer weer
+	public void showAll(){
+		//TODO
+	}
+	
+	// Geeft het volgende element weer (of de volgende slide indien alle elementen reeds weergegeven zijn)
+	public void nextItem(){
+		//TODO
+	}
+	
+	// Geeft het vorige item weer (of de vorige slide indien er geen elementen meer zijn)
+	public void previousItem(){
+		//TODO
+	}
+		
 	//exit
 	public void exit(int n) {
 		System.exit(n);
