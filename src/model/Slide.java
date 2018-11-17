@@ -1,7 +1,4 @@
 package model;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 import java.util.Vector;
 
 /** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
@@ -96,27 +93,4 @@ public class Slide {
 	public int getSize() {
 		return items.size();
 	}
-
-/*	public void draw(Graphics g, Rectangle area, ImageObserver view) {
-		float scale = getScale(area);
-	    int y = area.y;
-		//De titel hoeft niet meer apart behandeld te worden 
-	    SlideItem slideItem = this.title;
-	    //Style style = Style.getStyle(slideItem.getLevel());
-	    slideItem.draw(area.x, y, scale, g, view);
-	    
-	    y += slideItem.getBoundingBox(g, view, scale).height;
-	    
-	    for (int number=0; number<getSize(); number++) {
-	      slideItem = (SlideItem)getSlideItems().elementAt(number);
-	      //style = Style.getStyle(slideItem.getLevel());
-	      slideItem.draw(area.x, y, scale, g, view);
-	      y += slideItem.getBoundingBox(g, view, scale).height;
-	    }
-	  }*/
-
-//	// geef de schaal om de slide te kunnen tekenen
-//	private float getScale(Rectangle area) {
-//		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
-//	}
 }

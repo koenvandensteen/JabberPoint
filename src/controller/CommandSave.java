@@ -5,9 +5,9 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.Accessor;
+import model.AccessorFactory;
 import model.Presentation;
-import model.XMLAccessor;
+import model.Writer;
 
 public class CommandSave implements Command {
 	
@@ -25,9 +25,10 @@ public class CommandSave implements Command {
 	
 	@Override
 	public void execute() {
-		Accessor xmlAccessor = new XMLAccessor();
+		//we just hard code the XML factory here but could additional logic that just checks the file extension name and select a factory based on that.
+		Writer writer = AccessorFactory.GetFactory(".xml").CreateWriter();
 		try {
-			xmlAccessor.saveFile(presentation, SAVEFILE);
+			writer.Write(presentation, SAVEFILE);
 		} catch (IOException exc) {
 			JOptionPane.showMessageDialog(parent, IOEX + exc, 
 					SAVEERR, JOptionPane.ERROR_MESSAGE);

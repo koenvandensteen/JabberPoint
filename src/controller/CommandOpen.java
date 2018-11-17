@@ -5,9 +5,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.Accessor;
-import model.Presentation;
-import model.XMLAccessor;
+import model.AccessorFactory;
+import model.Reader;
 import view.SlideViewer;
 
 public class CommandOpen implements Command {
@@ -18,20 +17,18 @@ public class CommandOpen implements Command {
 	
 	private SlideViewer slideViewer;
 	private Frame parent;
-	private Presentation presentation;
 
-	public CommandOpen(SlideViewer slideViewer, Frame parent, Presentation presentation) {
+	public CommandOpen(SlideViewer slideViewer, Frame parent) {
 		this.slideViewer = slideViewer;
 		this.parent = parent;
-		this.presentation = presentation;
 	}
 
 	@Override
 	public void execute() {
 		slideViewer.clear();
-		Accessor xmlAccessor = new XMLAccessor();
+		Reader reader = AccessorFactory.GetFactory(".xml").CreateReader() ;
 		try {
-			xmlAccessor.loadFile(presentation, TESTFILE);
+			slideViewer.SetPresentation(reader.Read(TESTFILE));
 			slideViewer.setSlideNumber(0);
 		} catch (IOException exc) {
 			JOptionPane.showMessageDialog(parent, IOEX + exc, 

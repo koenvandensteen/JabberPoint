@@ -2,19 +2,16 @@ package controller;
 
 import java.awt.Frame;
 
-import model.Presentation;
 import view.SlideViewer;
 
 public class CommandFactory {
 	
 	private SlideViewer slideViewer;
 	private Frame parent;
-	private Presentation presentation;
 	
-	public CommandFactory(Frame parent,SlideViewer slideViewer, Presentation presentation){
+	public CommandFactory(Frame parent,SlideViewer slideViewer){
 		this.parent = parent;
 		this.slideViewer = slideViewer;
-		this.presentation = presentation;
 		System.out.println("presentation weghalen? (ComFac)");
 	}
 	
@@ -51,11 +48,11 @@ public class CommandFactory {
 	}
 
 	public Command createOpenCMD(){
-		return new CommandOpen(slideViewer, parent, presentation);
+		return new CommandOpen(slideViewer, parent);
 	}
 	
 	public Command createSaveCMD(){
-		return new CommandSave(parent, presentation);
+		return new CommandSave(parent, slideViewer.GetPresentation());
 	}
 	
 	public Command createNewCMD(){

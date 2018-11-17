@@ -16,10 +16,19 @@ private Presentation presentation;
 //	
 //		clear();
 //	}
+	public void SetPresentation(Presentation presentation)
+	{
+		this.presentation = presentation;
+	}
+	
+	public Presentation GetPresentation()
+	{
+		return presentation;
+	}
 	
 	public SlideViewer(Presentation presentation) {
-		this.presentation = presentation;	
 		clear();
+		this.presentation = presentation;	
 	}
 	
 	public void setShowView(SlideViewerComponent slideViewerComponent) {
@@ -77,7 +86,8 @@ private Presentation presentation;
 	
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
-		presentation.clear();
+		if(presentation!= null)
+			presentation.clear();
 	}
 	
 	// Geeft alle items in één keer weer
