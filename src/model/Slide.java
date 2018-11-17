@@ -21,6 +21,34 @@ public class Slide {
 	protected TextItem title; // de titel wordt apart bewaard
 	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
 	
+	private int numberofItemsToDraw = 0;
+	private boolean drawAllItem = false;
+	
+	public int GetNumberOfItemsToDraw()
+	{
+		return drawAllItem ? items.size()  : numberofItemsToDraw;
+	}
+	
+	public void IncrementItemsToDraw()
+	{
+		++numberofItemsToDraw;
+	}
+	
+	public void DecrementItemsToDraw()
+	{
+		--numberofItemsToDraw;
+	}
+	
+	public void SetitemsToDraw(int nritems)
+	{
+		numberofItemsToDraw = nritems <= items.size() ? nritems : items.size();
+	}
+	
+	public void ToggleDrawAllitems()
+	{
+		drawAllItem = !drawAllItem;
+	}
+	
 	public Slide() {
 		items = new Vector<SlideItem>();
 	}

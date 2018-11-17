@@ -108,7 +108,7 @@ public class SlideViewerComponent extends JComponent {
 	    
 	   y += slideItem.getBoundingBox(g, view, scale).height;
 	    
-	    for (int number=0; number<slide.getSize(); number++) {
+	    for (int number=0; number<slide.GetNumberOfItemsToDraw(); number++) {
 	      slideItem = slide.getSlideItems().elementAt(number);
 	      slideItem.draw(0, y, scale, g, view);
 	      
