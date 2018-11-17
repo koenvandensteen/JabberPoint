@@ -70,22 +70,26 @@ private Presentation presentation;
 	}
 	
 	// Geeft alle items in één keer weer
-	public void showAll(){
-		System.out.println("TODO: show all");
+	public void showAllOrNext(){
+		Slide workSlide = presentation.getCurrentSlide();
+		if(workSlide.GetNumberOfItemsToDraw() < workSlide.getSize() - 1){
+			showAll();
+		}
+		else{
+			nextSlide();
+		}
 	}
 	
 	// togglet het weergeven in één keer (per slide)
 	public void toggleShowAll(){
-		//TODO
 		presentation.getCurrentSlide().ToggleDrawAllitems();
 	}
 	
 	// Geeft het volgende element weer (of de volgende slide indien alle elementen reeds weergegeven zijn)
 	public void nextItem(){
-		//TODO
 		Slide workSlide = presentation.getCurrentSlide();
-		if(workSlide.GetNumberOfItemsToDraw() < workSlide.getSize() - 1){
-			presentation.getCurrentSlide().IncrementItemsToDraw();
+		if(workSlide.GetNumberOfItemsToDraw() < workSlide.getSize()){
+			workSlide.IncrementItemsToDraw();
 		}
 		else{
 			nextSlide();
@@ -94,14 +98,33 @@ private Presentation presentation;
 	
 	// Geeft het vorige item weer (of de vorige slide indien er geen elementen meer zijn)
 	public void previousItem(){
-		//TODO
 		Slide workSlide = presentation.getCurrentSlide();
 		if(workSlide.GetNumberOfItemsToDraw() > 0 && !workSlide.isDrawAllItems()){
-			presentation.getCurrentSlide().DecrementItemsToDraw();
+			workSlide.DecrementItemsToDraw();
 		}
 		else{
 			prevSlide();
+			showAll();
 		}
+	}
+	
+	public void clearItemsOrBack(){
+		if(presentation.getCurrentSlide().GetNumberOfItemsToDraw() > 0){
+			clearSlide();
+		}
+		else{
+			prevSlide();
+			showAll();
+		}
+	}
+	
+	private void clearSlide(){
+		presentation.getCurrentSlide().SetitemsToDraw(0);
+	}
+	
+	private void showAll(){
+		int itemCount = presentation.getCurrentSlide().getSize();
+		presentation.getCurrentSlide().SetitemsToDraw(itemCount);
 	}
 		
 	//exit

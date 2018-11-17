@@ -35,7 +35,11 @@ public class CommandFactory {
 	}
 	
 	public Command createShowAllCMD(){
-		return new CommandShowAllItems(slideViewer, parent);
+		return new CommandAllOrNext(slideViewer, parent);
+	}
+	
+	public Command createClearItemsCMD(){
+		return new CommandClearOrBack(slideViewer, parent);
 	}
 	
 	public Command createExitCMD(){

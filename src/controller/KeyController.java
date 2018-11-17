@@ -20,6 +20,7 @@ public class KeyController extends KeyAdapter {
 	private Command nextItemCommand;
 	private Command prevItemCommand;
 	private Command allItemsCommand;
+	private Command clearItemsCommand;
 	private Command exitCommand;	
 
 	
@@ -29,6 +30,7 @@ public class KeyController extends KeyAdapter {
 		nextItemCommand = comFac.createNextItemCMD();
 		prevItemCommand = comFac.createPreviousItemCMD();
 		allItemsCommand = comFac.createShowAllCMD();
+		clearItemsCommand = comFac.createClearItemsCMD();
 		exitCommand = comFac.createExitCMD();
 	}
 
@@ -38,13 +40,19 @@ public class KeyController extends KeyAdapter {
 		
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
-			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
+				//unconditional next slide
+				selectedCommand = nextSlideCommand;
+				break;				
+			case KeyEvent.VK_DOWN:
 			case '+':
 				//next item / next slide (if all items shown)
 				selectedCommand = nextItemCommand;
 				break;
 			case KeyEvent.VK_PAGE_UP:
+			case KeyEvent.VK_BACK_SPACE:
+				//unconditional previous slide
+				selectedCommand = prevSlideCommand;
 			case KeyEvent.VK_UP:
 			case '-':
 				//previous item / previous slide (if no items shown)
@@ -57,11 +65,11 @@ public class KeyController extends KeyAdapter {
 				break;
 			case KeyEvent.VK_RIGHT:
 				//next slide, all items
-				selectedCommand = nextSlideCommand;
+				selectedCommand = allItemsCommand;
 				break;
 			case KeyEvent.VK_LEFT:
 				//previous slide, all items
-				selectedCommand = prevSlideCommand;
+				selectedCommand = clearItemsCommand;
 				break;
 			case KeyEvent.VK_A:
 				//show all
