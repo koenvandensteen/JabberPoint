@@ -53,6 +53,7 @@ public class KeyController extends KeyAdapter {
 			case KeyEvent.VK_BACK_SPACE:
 				//unconditional previous slide
 				selectedCommand = prevSlideCommand;
+				break;
 			case KeyEvent.VK_UP:
 			case '-':
 				//previous item / previous slide (if no items shown)

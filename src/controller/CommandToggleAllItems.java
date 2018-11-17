@@ -12,9 +12,8 @@ public class CommandToggleAllItems implements Command {
 	
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-		System.out.println("TODO: toggle command");
 		slideViewer.toggleShowAll();
+		slideViewer.updateView();
 	}
 
 }

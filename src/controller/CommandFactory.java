@@ -24,19 +24,19 @@ public class CommandFactory {
 	}
 	
 	public Command createNextItemCMD(){
-		return new CommandNextItem(slideViewer, parent);
+		return new CommandNextItem(slideViewer);
 	}
 	
 	public Command createPreviousItemCMD(){
-		return new CommandPreviousItem(slideViewer, parent);
+		return new CommandPreviousItem(slideViewer);
 	}
 	
 	public Command createShowAllCMD(){
-		return new CommandAllOrNext(slideViewer, parent);
+		return new CommandAllOrNext(slideViewer);
 	}
 	
 	public Command createClearItemsCMD(){
-		return new CommandClearOrBack(slideViewer, parent);
+		return new CommandClearOrBack(slideViewer);
 	}
 	
 	public Command createExitCMD(){
@@ -56,7 +56,7 @@ public class CommandFactory {
 	}
 	
 	public Command createNewCMD(){
-		return new CommandNew(slideViewer, parent);
+		return new CommandNew(slideViewer);
 	}
 	
 	public Command createShowAboutBoxCMD(){
