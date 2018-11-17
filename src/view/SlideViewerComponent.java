@@ -4,9 +4,12 @@ import java.awt.Font;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.ImageObserver;
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import model.Slide;
+import model.SlideItem;
 import model.Presentation;
 
 /** <p>SlideViewerComponent is een grafische component die Slides kan laten zien.</p>
@@ -35,8 +38,12 @@ public class SlideViewerComponent extends JComponent {
 	private static final int FONTHEIGHT = 10;
 	private static final int XPOS = 1100;
 	private static final int YPOS = 20;
+	
+	//changed VB
+	ItemDrawerBridge itemDrawer;
 
-	public SlideViewerComponent(Presentation pres, JFrame frame) {
+	public SlideViewerComponent(JFrame frame, Presentation pres) {
+	//public SlideViewerComponent(JFrame frame){
 		setBackground(BGCOLOR); 
 		presentation = pres;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
@@ -47,15 +54,28 @@ public class SlideViewerComponent extends JComponent {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
 
-	public void update(Presentation presentation, Slide data) {
+//	public void update(Presentation presentation, Slide data) {
+//		if (data == null) {
+//			repaint();
+//			return;
+//		}
+//		this.presentation = presentation;
+//		this.slide = data;
+//		repaint();
+//		frame.setTitle(presentation.getTitle());
+//	}
+	
+	public void update(String title, Slide data) {
+	//public void update(Presentation pres, Slide data){
 		if (data == null) {
 			repaint();
 			return;
 		}
-		this.presentation = presentation;
+		//this.presentation = pres;// in andere versie comment
+		//String title = presentation.getTitle();//in andere versie comment
 		this.slide = data;
 		repaint();
-		frame.setTitle(presentation.getTitle());
+		frame.setTitle(title);
 	}
 
 // teken de slide
@@ -71,6 +91,37 @@ public class SlideViewerComponent extends JComponent {
                  presentation.getSize(), XPOS, YPOS);
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		
-		slide.draw(g, area, this);
+		draw(g, area, this);
 	}
+	
+	public void draw(Graphics g, Rectangle area, ImageObserver view) {
+		float scale = getScale(area);
+	    int y = area.y;
+	    
+	    //
+	    SlideItem slideItem;
+	    
+		// De titel hoeft niet meer apart behandeld te worden 
+	    slideItem = slide.getTitle();
+	    //Style style = Style.getStyle(slideItem.getLevel());
+	    itemDrawer.draw(area.x, area.y, scale, g, view, slideItem);
+	    
+	   y += itemDrawer.getBoundingBox(g, view, scale, slideItem).height;
+	    
+	    for (int number=0; number<slide.getSize(); number++) {
+	      slideItem = slide.getSlideItems().elementAt(number);
+	      itemDrawer.draw(area.x, area.y, scale, g, view, slideItem);
+	      
+	      //style = Style.getStyle(slideItem.getLevel());
+	      //slideItem.draw(area.x, y, scale, g, view);
+	      y += itemDrawer.getBoundingBox(g, view, scale, slideItem).height;
+	    }
+	  }
+	
+	// geef de schaal om de slide te kunnen tekenen
+	private float getScale(Rectangle area) {
+		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
+	}
+	
+	
 }

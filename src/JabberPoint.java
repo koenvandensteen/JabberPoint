@@ -1,11 +1,13 @@
-package model;
+
 import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
 import view.SlideViewer;
 import view.SlideViewerFrame;
+import model.Accessor;
 import model.Presentation;
+import model.XMLAccessor;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
@@ -41,7 +43,7 @@ public class JabberPoint {
 			} else {
 				new XMLAccessor().loadFile(presentation, argv[0]);
 			}
-			presentation.setSlideNumber(0);
+			slideViewer.setSlideNumber(0);
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,

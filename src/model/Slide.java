@@ -30,10 +30,13 @@ public class Slide {
 		items.addElement(anItem);
 	}
 
-	// geef de titel van de slide
-	public String getTitle() {
-		/* Geef nu de tekst van het TextItem terug */
-		return title.getText();
+//	// geef de titel van de slide
+//	public String getTitle() {
+//		/* Geef nu de tekst van het TextItem terug */
+//		return title.getText();
+//	}
+	public TextItem getTitle() {
+		return title;
 	}
 
 	// verander de titel van de slide
@@ -62,10 +65,10 @@ public class Slide {
 		return items.size();
 	}
 
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
+/*	public void draw(Graphics g, Rectangle area, ImageObserver view) {
 		float scale = getScale(area);
 	    int y = area.y;
-		/* De titel hoeft niet meer apart behandeld te worden */
+		//De titel hoeft niet meer apart behandeld te worden 
 	    SlideItem slideItem = this.title;
 	    //Style style = Style.getStyle(slideItem.getLevel());
 	    slideItem.draw(area.x, y, scale, g, view);
@@ -78,10 +81,10 @@ public class Slide {
 	      slideItem.draw(area.x, y, scale, g, view);
 	      y += slideItem.getBoundingBox(g, view, scale).height;
 	    }
-	  }
+	  }*/
 
-	// geef de schaal om de slide te kunnen tekenen
-	private float getScale(Rectangle area) {
-		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
-	}
+//	// geef de schaal om de slide te kunnen tekenen
+//	private float getScale(Rectangle area) {
+//		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
+//	}
 }

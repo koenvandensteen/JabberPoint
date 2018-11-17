@@ -25,16 +25,21 @@ public class SlideViewerFrame extends JFrame {
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 	
-	public SlideViewerFrame(String title, Presentation presentation) {
+	//public SlideViewerFrame(String title, Presentation presentation) {
+	public SlideViewerFrame(String title, SlideViewer slideViewer, Presentation pres){
 		super(title);
-		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-		presentation.setShowView(slideViewerComponent);
-		setupWindow(slideViewerComponent, presentation);
+		//SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
+		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(this, pres);
+		//presentation.setShowView(slideViewerComponent);
+		slideViewer.setShowView(slideViewerComponent);
+		//setupWindow(slideViewerComponent, presentation);
+		setupWindow(slideViewerComponent, slideViewer, pres);
 	}
 
 // De GUI opzetten
-	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent, Presentation presentation) {
+	//public void setupWindow(SlideViewerComponent 
+	//		slideViewerComponent, Presentation presentation) {
+	public void setupWindow(SlideViewerComponent slideViewerComponent, SlideViewer slideViewer, Presentation pres){
 		setTitle(JABTITLE);
 		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
@@ -42,8 +47,8 @@ public class SlideViewerFrame extends JFrame {
 				}
 			});
 		getContentPane().add(slideViewerComponent);
-		addKeyListener(new KeyController(presentation)); // een controller toevoegen
-		setMenuBar(new MenuController(this, presentation));	// nog een controller toevoegen
+		addKeyListener(new KeyController(slideViewer)); // een controller toevoegen
+		setMenuBar(new MenuController(this, slideViewer, pres));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);
 	}
