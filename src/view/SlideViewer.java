@@ -107,6 +107,10 @@ private Presentation presentation;
 	public void clearItemsOrBack(){
 		if(presentation.getCurrentSlide().GetNumberOfItemsToDraw() > 0){
 			clearSlide();
+			//uitzondering: als de vlag drawAllItems staat kunnen we niet clearen!
+			if(presentation.getCurrentSlide().isDrawAllItems()){
+				prevSlide();
+			}
 		}
 		else{
 			if(presentation.getSlideNumber()>0){

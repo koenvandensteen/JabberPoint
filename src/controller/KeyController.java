@@ -21,7 +21,8 @@ public class KeyController extends KeyAdapter {
 	private Command prevItemCommand;
 	private Command allItemsCommand;
 	private Command clearItemsCommand;
-	private Command exitCommand;	
+	private Command exitCommand;
+	private Command toggleCommand;
 
 	
 	public KeyController(CommandFactory comFac){
@@ -32,6 +33,7 @@ public class KeyController extends KeyAdapter {
 		allItemsCommand = comFac.createShowAllCMD();
 		clearItemsCommand = comFac.createClearItemsCMD();
 		exitCommand = comFac.createExitCMD();
+		toggleCommand = comFac.createToggleItemsCMD();
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
@@ -72,9 +74,10 @@ public class KeyController extends KeyAdapter {
 				//previous slide, all items
 				selectedCommand = clearItemsCommand;
 				break;
-			case KeyEvent.VK_A:
+			case 't':
+			case 'T':
 				//show all
-				selectedCommand = allItemsCommand;
+				selectedCommand = toggleCommand;
 				break; // wordt nooit bereikt als het goed is
 			default:
 				//indien toch bereikt gaan we voor een propere exit
