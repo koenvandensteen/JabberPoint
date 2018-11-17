@@ -13,7 +13,7 @@ public class CommandNextItem implements Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		slideViewer.nextItem();
+		System.out.println("TODO: Show next Item command");
 	}
 
 }

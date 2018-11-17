@@ -13,7 +13,7 @@ public class CommandShowAllItems implements Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		slideViewer.showAll();
+		System.out.println("TODO: Show all Items command");
 	}
 
 }
