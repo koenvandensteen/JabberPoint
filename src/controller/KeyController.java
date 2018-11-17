@@ -23,17 +23,26 @@ public class KeyController extends KeyAdapter {
 //		presentation = p;
 //	}
 	
-	Command nextSlideCommand = new CommandNextSlide(slideViewer);
-	Command prevSlideCommand = new CommandPreviousSlide(slideViewer);
+
+	Command nextSlideCommand;
+	Command prevSlideCommand;
+	Command nextItemCommand;
+	Command prevItemCommand;
+	Command allItemsCommand;
+	Command exitCommand;	
 	//not used with KeyController
-	//Command slideNumCommand = new CommandSlideByNumber(slideViewer);
-	Command nextItemCommand = new CommandNextItem(slideViewer);
-	Command prevItemCommand = new CommandPreviousItem(slideViewer);
-	Command allItemsCommand = new CommandShowAllItems(slideViewer);
-	Command exitCommand = new CommandExit(slideViewer);	
+	//Command slideNumCommand;
 	
 	public KeyController(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;
+		nextSlideCommand = new CommandNextSlide(slideViewer);
+		prevSlideCommand = new CommandPreviousSlide(slideViewer);	
+		nextItemCommand = new CommandNextItem(slideViewer);
+		prevItemCommand = new CommandPreviousItem(slideViewer);
+		allItemsCommand = new CommandShowAllItems(slideViewer);
+		exitCommand = new CommandExit(slideViewer);	
+		//not used with KeyController
+		//slideNumCommand = new CommandSlideByNumber(slideViewer);
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
