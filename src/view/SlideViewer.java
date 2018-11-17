@@ -60,8 +60,19 @@ private Presentation presentation;
 	public void goToSlideNR(){
 		String PAGENR = "Page number?";		
 		String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
+		
+		if(pageNumberStr == null) // cancel is pressed
+			return;
+		
+		try {			
 		int pageNumber = Integer.parseInt(pageNumberStr);
 		setSlideNumber(pageNumber - 1);
+		}
+		catch (NumberFormatException exc){
+			System.out.println("only numeric input");
+		}
+		
+
 	}
 	
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
