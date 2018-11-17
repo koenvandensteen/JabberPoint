@@ -12,7 +12,7 @@ public class CommandAmountItems implements Command {
 	
 	@Override
 	public void execute() {
-		System.out.println("TODO: print a certain amount of items");	
+		slideViewer.goToItemNR();
 	}
 
 }

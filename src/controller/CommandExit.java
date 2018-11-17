@@ -12,7 +12,6 @@ public class CommandExit implements Command {
 	
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
 		slideViewer.exit(0);
 	}
 
