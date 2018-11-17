@@ -43,7 +43,7 @@ public class MenuController extends MenuBar {
 //	protected static final String LOADERR = "Load Error";
 //	protected static final String SAVEERR = "Save Error";
 	
-	//expansion
+	//menu expansion
 	protected static final String NEXT_ITEM = "Next item";
 	protected static final String PREV_ITEM = "Prev item";
 	protected static final String ALL_ITEM = "All items";
