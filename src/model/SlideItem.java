@@ -47,15 +47,15 @@ public abstract class SlideItem {
 		return level;
 	}
 
-/*// Geef de bounding box
+// Geef de bounding box
 	public abstract Rectangle getBoundingBox(Graphics g, 
 			ImageObserver observer, float scale);
-*/
+
 
 // teken het item
-//	public void draw(int x, int y, float scale, 
-//			Graphics g, ImageObserver observer)
-//	{
-//		itemDrawer.draw(x, y, scale, g, observer, this);
-//	}
+	public void draw(int x, int y, float scale, 
+			Graphics g, ImageObserver observer)
+	{
+		itemDrawer.draw(x, y, scale, g, observer, this);
+	}
 }

@@ -54,14 +54,14 @@ public class BitmapItem extends SlideItem {
 		return imageName;
 	}
 
-/*// geef de bounding box van de afbeelding
+// geef de bounding box van de afbeelding
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale) {
 	
 		return new Rectangle((int) (itemStyle.indent * scale), 0,
 				(int) (bufferedImage.getWidth(observer) * scale),
 				((int) (itemStyle.leading * scale)) + 
 				(int) (bufferedImage.getHeight(observer) * scale));
-	}*/
+	}
 
 	public String toString() {
 		return "BitmapItem[" + getLevel() + "," + imageName + "]";

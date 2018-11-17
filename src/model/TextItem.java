@@ -57,7 +57,7 @@ public class TextItem extends SlideItem {
 		return attrStr;
 	}
 
-/*// geef de bounding box van het item
+// geef de bounding box van het item
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, 
 			float scale) {
 		
@@ -78,7 +78,7 @@ public class TextItem extends SlideItem {
 		}
 		
 		return new Rectangle((int) (itemStyle.indent*scale), 0, xsize, ysize );
-	}*/
+	}
 
 	public List<TextLayout> getLayouts(Graphics g, float scale) {
 		List<TextLayout> layouts = new ArrayList<TextLayout>();

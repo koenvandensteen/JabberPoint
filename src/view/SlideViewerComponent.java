@@ -104,23 +104,23 @@ public class SlideViewerComponent extends JComponent {
 		// De titel hoeft niet meer apart behandeld te worden 
 	    slideItem = slide.getTitle();
 	    //Style style = Style.getStyle(slideItem.getLevel());
-	    itemDrawer.draw(area.x, area.y, scale, g, view, slideItem);
+	    slideItem.draw(area.x, area.y, scale, g, view);
 	    
-	   y += itemDrawer.getBoundingBox(g, view, scale, slideItem).height;
+	   y += slideItem.getBoundingBox(g, view, scale).height;
 	    
 	    for (int number=0; number<slide.getSize(); number++) {
 	      slideItem = slide.getSlideItems().elementAt(number);
-	      itemDrawer.draw(area.x, area.y, scale, g, view, slideItem);
+	      slideItem.draw(0, y, scale, g, view);
 	      
 	      //style = Style.getStyle(slideItem.getLevel());
 	      //slideItem.draw(area.x, y, scale, g, view);
-	      y += itemDrawer.getBoundingBox(g, view, scale, slideItem).height;
+	      y += slideItem.getBoundingBox(g, view, scale).height;
 	    }
 	  }
 	
 	// geef de schaal om de slide te kunnen tekenen
 	private float getScale(Rectangle area) {
-		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
+		return Math.min(((float)area.width) / ((float)Slide.WIDTH), ((float)area.height) / ((float)Slide.HEIGHT));
 	}
 	
 	
