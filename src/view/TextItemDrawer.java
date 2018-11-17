@@ -49,33 +49,5 @@ public class TextItemDrawer extends ItemDrawerBridge {
 				layout.draw(g2d, pen.x, pen.y);
 				pen.y += layout.getDescent();
 			}
-	}
-	
-		// geef de bounding box van het item
-	@Override
-		public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItem text) {
-			
-			TextItem itemToDraw = (TextItem) text;	
-			
-			Style myStyle = text.GetStyle();
-			
-			List<TextLayout> layouts = itemToDraw.getLayouts(g, scale);
-			int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
-			Iterator<TextLayout> iterator = layouts.iterator();
-			
-			while (iterator.hasNext()) {
-				TextLayout layout = iterator.next();
-				Rectangle2D bounds = layout.getBounds();
-				if (bounds.getWidth() > xsize) {
-					xsize = (int) bounds.getWidth();
-				}
-				if (bounds.getHeight() > 0) {
-					ysize += bounds.getHeight();
-				}
-				ysize += layout.getLeading() + layout.getDescent();
-			}
-			
-			return new Rectangle((int) (myStyle.getIndent()*scale), 0, xsize, ysize );
-		}
-		
+	}	
 }

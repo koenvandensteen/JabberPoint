@@ -23,17 +23,4 @@ public class BitmapItemDrawer extends ItemDrawerBridge {
                 (int) (bufferedImage.getHeight(observer)*scale), observer);
 	}
 	
-	// geef de bounding box van de afbeelding
-	@Override
-		public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, SlideItem item) {
-		
-			BufferedImage bufferedImage = ((BitmapItem)item).GetBufferedImage();
-			Style myStyle = item.GetStyle();
-			
-			return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-					(int) (bufferedImage.getWidth(observer) * scale),
-					((int) (myStyle.getLeading() * scale)) + 
-					(int) (bufferedImage.getHeight(observer) * scale));
-		}
-
 }
