@@ -2,15 +2,12 @@ package controller;
 
 import java.awt.Frame;
 import view.AboutBox;
-import view.SlideViewer;
 
 public class CommandShowAboutBox implements Command {
 	
-	SlideViewer slideViewer;
-	Frame parent;
+	private Frame parent;
 
-	public CommandShowAboutBox(SlideViewer slideViewer, Frame parent){
-		this.slideViewer = slideViewer;
+	public CommandShowAboutBox(Frame parent){
 		this.parent = parent;
 	}
 	

@@ -1,7 +1,6 @@
 package controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
-import view.SlideViewer;
 
 
 /** <p>This is the KeyController (KeyListener)</p>
@@ -15,34 +14,22 @@ import view.SlideViewer;
 */
 
 public class KeyController extends KeyAdapter {
-	//private Presentation presentation; // Er worden commando's gegeven aan de presentatie
-	private SlideViewer slideViewer;
-	//private Command command;
-	
-//	public KeyController(Presentation p) {
-//		presentation = p;
-//	}
-	
 
-	Command nextSlideCommand;
-	Command prevSlideCommand;
-	Command nextItemCommand;
-	Command prevItemCommand;
-	Command allItemsCommand;
-	Command exitCommand;	
-	//not used with KeyController
-	//Command slideNumCommand;
+	private Command nextSlideCommand;
+	private Command prevSlideCommand;
+	private Command nextItemCommand;
+	private Command prevItemCommand;
+	private Command allItemsCommand;
+	private Command exitCommand;	
+
 	
-	public KeyController(SlideViewer slideViewer){
-		this.slideViewer = slideViewer;
-		nextSlideCommand = new CommandNextSlide(slideViewer);
-		prevSlideCommand = new CommandPreviousSlide(slideViewer);	
-		nextItemCommand = new CommandNextItem(slideViewer);
-		prevItemCommand = new CommandPreviousItem(slideViewer);
-		allItemsCommand = new CommandShowAllItems(slideViewer);
-		exitCommand = new CommandExit(slideViewer);	
-		//not used with KeyController
-		//slideNumCommand = new CommandSlideByNumber(slideViewer);
+	public KeyController(CommandFactory comFac){
+		nextSlideCommand = comFac.createNextSlideCMD();
+		prevSlideCommand = comFac.createPreviousSlideCMD();
+		nextItemCommand = comFac.createNextItemCMD();
+		prevItemCommand = comFac.createPreviousItemCMD();
+		allItemsCommand = comFac.createShowAllCMD();
+		exitCommand = comFac.createExitCMD();
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {

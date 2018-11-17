@@ -4,6 +4,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 import javax.swing.JFrame;
 import model.Presentation;
+import controller.CommandFactory;
 import controller.KeyController;
 import controller.MenuController;
 
@@ -25,9 +26,13 @@ public class SlideViewerFrame extends JFrame {
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
 	
+	private CommandFactory comFac;
+	
 	//public SlideViewerFrame(String title, Presentation presentation) {
 	public SlideViewerFrame(String title, SlideViewer slideViewer, Presentation pres){
 		super(title);
+		// create command factory
+		comFac = new CommandFactory(this, slideViewer, pres);		
 		//SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(this, pres);
 		//presentation.setShowView(slideViewerComponent);
@@ -47,9 +52,9 @@ public class SlideViewerFrame extends JFrame {
 				}
 			});
 		getContentPane().add(slideViewerComponent);
-		addKeyListener(new KeyController(slideViewer)); // een controller toevoegen
-		setMenuBar(new MenuController(this, slideViewer, pres));	// nog een controller toevoegen
+		addKeyListener(new KeyController(comFac)); // een controller toevoegen
+		setMenuBar(new MenuController(this, slideViewer, pres, comFac));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
-		setVisible(true);
+		setVisible(true);		
 	}
 }

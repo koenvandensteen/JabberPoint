@@ -4,7 +4,7 @@ import view.SlideViewer;
 
 public class CommandExit implements Command {
 	
-	SlideViewer slideViewer;
+	private SlideViewer slideViewer;
 
 	public CommandExit(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;

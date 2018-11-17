@@ -4,7 +4,7 @@ import view.SlideViewer;
 
 public class CommandAmountItems implements Command {
 
-	SlideViewer slideViewer;
+	private SlideViewer slideViewer;
 
 	public CommandAmountItems(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;

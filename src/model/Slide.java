@@ -24,6 +24,10 @@ public class Slide {
 	private int numberofItemsToDraw = 0;
 	private boolean drawAllItem = false;
 	
+	public boolean isDrawAllItems(){
+		return drawAllItem;
+	}
+	
 	public int GetNumberOfItemsToDraw()
 	{
 		return drawAllItem ? items.size()  : numberofItemsToDraw;

@@ -6,13 +6,8 @@ import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 
-import javax.swing.JOptionPane;
 import model.Presentation;
-import model.Accessor;
-import model.XMLAccessor;
-import view.AboutBox;
 import view.SlideViewer;
 
 /** <p>De controller voor het menu</p>
@@ -25,10 +20,6 @@ import view.SlideViewer;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 public class MenuController extends MenuBar {
-	
-	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
-	private SlideViewer slideViewer;
 	
 	private static final long serialVersionUID = 227L;
 	
@@ -45,12 +36,12 @@ public class MenuController extends MenuBar {
 	protected static final String SAVE = "Save";
 	protected static final String VIEW = "View";
 	
-	protected static final String TESTFILE = "test.xml";
-	protected static final String SAVEFILE = "dump.xml";
-	
-	protected static final String IOEX = "IO Exception: ";
-	protected static final String LOADERR = "Load Error";
-	protected static final String SAVEERR = "Save Error";
+	//errors
+//	protected static final String TESTFILE = "test.xml";
+//	protected static final String SAVEFILE = "dump.xml";
+//	protected static final String IOEX = "IO Exception: ";
+//	protected static final String LOADERR = "Load Error";
+//	protected static final String SAVEERR = "Save Error";
 	
 	//expansion
 	protected static final String NEXT_ITEM = "Next item";
@@ -59,42 +50,42 @@ public class MenuController extends MenuBar {
 	protected static final String TOGGLE = "Toggle item navigation";
 	protected static final String NUM_ITEMS = "Display #items";
 	
-	//Commands
-	Command nextSlideCommand;
-	Command prevSlideCommand;
-	Command nextItemCommand;
-	Command prevItemCommand;
-	Command showAllItemsCommand;
-	Command exitCommand;	
-	Command slideNumCommand;
+	//Commands	
+	private Command nextSlideCommand;
+	private Command prevSlideCommand;
+	private Command nextItemCommand;
+	private Command prevItemCommand;
+	private Command showAllItemsCommand;
+	private Command exitCommand;	
+	private Command slideNumCommand;
 	
-	Command saveCommand;
-	Command newCommand;
-	Command showAboutBoxCommand;
-	Command toggleAllItemsCommand;
-	Command numItemsCommand;
+	private Command openCommand;
+	private Command saveCommand;
+	private Command newCommand;
+	private Command showAboutBoxCommand;
+	private Command toggleAllItemsCommand;
+	private Command numItemsCommand;
 
 
 	//public MenuController(Frame frame, Presentation pres) {
-	public MenuController(Frame frame, SlideViewer slv, Presentation pres){
-		parent = frame;
-		presentation = pres;
-		slideViewer = slv;
+	public MenuController(Frame frame, SlideViewer slv, Presentation pres, CommandFactory comFac){
 		
 		//commands
-		nextSlideCommand = new CommandNextSlide(slideViewer);
-		prevSlideCommand = new CommandPreviousSlide(slideViewer);	
-		nextItemCommand = new CommandNextItem(slideViewer);
-		prevItemCommand = new CommandPreviousItem(slideViewer);
-		showAllItemsCommand = new CommandShowAllItems(slideViewer);
-		exitCommand = new CommandExit(slideViewer);	
-		slideNumCommand = new CommandSlideByNumber(slideViewer);
+		//nextSlideCommand = new CommandNextSlide(slideViewer);
+		nextSlideCommand = comFac.createNextSlideCMD();
+		prevSlideCommand = comFac.createPreviousSlideCMD();
+		nextItemCommand = comFac.createNextItemCMD();
+		prevItemCommand = comFac.createPreviousItemCMD();
+		showAllItemsCommand = comFac.createShowAllCMD();
+		exitCommand = comFac.createExitCMD();
+		slideNumCommand = comFac.createSlideByNumberCMD();
 		
-		saveCommand = new CommandSave(slideViewer);
-		newCommand = new CommandNew(slideViewer, parent);
-		showAboutBoxCommand = new CommandShowAboutBox(slideViewer, parent);
-		toggleAllItemsCommand = new CommandToggleAllItems(slideViewer);
-		numItemsCommand = new CommandAmountItems(slideViewer);
+		openCommand = comFac.createOpenCMD();
+		saveCommand = comFac.createSaveCMD();
+		newCommand = comFac.createNewCMD();
+		showAboutBoxCommand = comFac.createShowAboutBoxCMD();
+		toggleAllItemsCommand = comFac.createToggleItemsCMD();
+		numItemsCommand = comFac.createAmountItemsCMD();
 		//
 		
 		MenuItem menuItem;
@@ -106,17 +97,8 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				//presentation.clear();
-				slideViewer.clear();
-				Accessor xmlAccessor = new XMLAccessor();
-				try {
-					xmlAccessor.loadFile(presentation, TESTFILE);
-					slideViewer.setSlideNumber(0);
-				} catch (IOException exc) {
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-         			LOADERR, JOptionPane.ERROR_MESSAGE);
-				}
-				parent.repaint();
+				Command c = openCommand;
+				CommandInvoker.executeCommand(c);
 			}
 		} );
 		// NEW
@@ -131,18 +113,8 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(SAVE));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//execute commando
 				Command c = saveCommand;
 				CommandInvoker.executeCommand(c);
-				//oude code hieronder
-				Accessor xmlAccessor = new XMLAccessor();
-				try {
-					xmlAccessor.saveFile(presentation, SAVEFILE);
-				} catch (IOException exc) {
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-							SAVEERR, JOptionPane.ERROR_MESSAGE);
-				}
-				//einde oude code
 			}
 		});
 		//EXIT

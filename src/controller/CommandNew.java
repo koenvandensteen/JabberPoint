@@ -6,8 +6,8 @@ import view.SlideViewer;
 
 public class CommandNew implements Command {
 	
-	SlideViewer slideViewer;
-	Frame parent;
+	private SlideViewer slideViewer;
+	private Frame parent;
 
 	public CommandNew(SlideViewer slideViewer, Frame parent){
 		this.slideViewer = slideViewer;

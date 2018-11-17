@@ -3,6 +3,7 @@ package view;
 import javax.swing.JOptionPane;
 
 import model.Presentation;
+import model.Slide;
 
 public class SlideViewer {
 
@@ -17,8 +18,7 @@ private Presentation presentation;
 //	}
 	
 	public SlideViewer(Presentation presentation) {
-		this.presentation = presentation;
-	
+		this.presentation = presentation;	
 		clear();
 	}
 	
@@ -29,6 +29,14 @@ private Presentation presentation;
 	// verander het huidige-slide-nummer en laat het aan het window weten.
 	public void setSlideNumber(int number) {
 		presentation.setSlideNumber(number);
+		Slide workSlide = presentation.getCurrentSlide();
+		//draw only all items if the flag isn't set
+		if(workSlide.isDrawAllItems()){
+			workSlide.SetitemsToDraw(workSlide.getSize());
+		}
+		else{
+			workSlide.SetitemsToDraw(0);
+		}		
 		if (slideViewComponent != null) {
 			slideViewComponent.update(presentation.getTitle(), presentation.getCurrentSlide());
 			//slideViewComponent.update(presentation, presentation.getCurrentSlide());
@@ -63,17 +71,37 @@ private Presentation presentation;
 	
 	// Geeft alle items in één keer weer
 	public void showAll(){
+		System.out.println("TODO: show all");
+	}
+	
+	// togglet het weergeven in één keer (per slide)
+	public void toggleShowAll(){
 		//TODO
+		presentation.getCurrentSlide().ToggleDrawAllitems();
 	}
 	
 	// Geeft het volgende element weer (of de volgende slide indien alle elementen reeds weergegeven zijn)
 	public void nextItem(){
 		//TODO
+		Slide workSlide = presentation.getCurrentSlide();
+		if(workSlide.GetNumberOfItemsToDraw() < workSlide.getSize() - 1){
+			presentation.getCurrentSlide().IncrementItemsToDraw();
+		}
+		else{
+			nextSlide();
+		}
 	}
 	
 	// Geeft het vorige item weer (of de vorige slide indien er geen elementen meer zijn)
 	public void previousItem(){
 		//TODO
+		Slide workSlide = presentation.getCurrentSlide();
+		if(workSlide.GetNumberOfItemsToDraw() > 0 && !workSlide.isDrawAllItems()){
+			presentation.getCurrentSlide().DecrementItemsToDraw();
+		}
+		else{
+			prevSlide();
+		}
 	}
 		
 	//exit

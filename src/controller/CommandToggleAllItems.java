@@ -4,7 +4,7 @@ import view.SlideViewer;
 
 public class CommandToggleAllItems implements Command {
 	
-	SlideViewer slideViewer;
+	private SlideViewer slideViewer;
 
 	public CommandToggleAllItems(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;
@@ -14,6 +14,7 @@ public class CommandToggleAllItems implements Command {
 	public void execute() {
 		// TODO Auto-generated method stub
 		System.out.println("TODO: toggle command");
+		slideViewer.toggleShowAll();
 	}
 
 }

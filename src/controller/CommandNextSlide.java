@@ -4,7 +4,7 @@ import view.SlideViewer;
 
 public class CommandNextSlide implements Command {
 	
-	SlideViewer slideViewer;
+	private SlideViewer slideViewer;
 
 	public CommandNextSlide(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;
