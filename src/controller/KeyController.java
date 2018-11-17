@@ -23,29 +23,70 @@ public class KeyController extends KeyAdapter {
 //		presentation = p;
 //	}
 	
+
+	Command nextSlideCommand;
+	Command prevSlideCommand;
+	Command nextItemCommand;
+	Command prevItemCommand;
+	Command allItemsCommand;
+	Command exitCommand;	
+	//not used with KeyController
+	//Command slideNumCommand;
+	
 	public KeyController(SlideViewer slideViewer){
 		this.slideViewer = slideViewer;
+		nextSlideCommand = new CommandNextSlide(slideViewer);
+		prevSlideCommand = new CommandPreviousSlide(slideViewer);	
+		nextItemCommand = new CommandNextItem(slideViewer);
+		prevItemCommand = new CommandPreviousItem(slideViewer);
+		allItemsCommand = new CommandShowAllItems(slideViewer);
+		exitCommand = new CommandExit(slideViewer);	
+		//not used with KeyController
+		//slideNumCommand = new CommandSlideByNumber(slideViewer);
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
+		
+		Command selectedCommand = null;
+		
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				slideViewer.nextSlide();
+				//next item / next slide (if all items shown)
+				selectedCommand = nextItemCommand;
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				slideViewer.prevSlide();
+				//previous item / previous slide (if no items shown)
+				selectedCommand = prevItemCommand;
 				break;
 			case 'q':
 			case 'Q':
-				System.exit(0);
+				//exit the application
+				selectedCommand = exitCommand;
+				break;
+			case KeyEvent.VK_RIGHT:
+				//next slide, all items
+				selectedCommand = nextSlideCommand;
+				break;
+			case KeyEvent.VK_LEFT:
+				//previous slide, all items
+				selectedCommand = prevSlideCommand;
+				break;
+			case KeyEvent.VK_A:
+				//show all
+				selectedCommand = allItemsCommand;
 				break; // wordt nooit bereikt als het goed is
 			default:
+				//indien toch bereikt gaan we voor een propere exit
+				selectedCommand = exitCommand;
 				break;
 		}
+		
+		CommandInvoker.executeCommand(selectedCommand);
+		
 	}
 }
