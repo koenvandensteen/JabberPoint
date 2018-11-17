@@ -7,7 +7,6 @@ import java.awt.MenuShortcut;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import model.Presentation;
 import view.SlideViewer;
 
 /** <p>De controller voor het menu</p>
@@ -68,7 +67,7 @@ public class MenuController extends MenuBar {
 
 
 	//public MenuController(Frame frame, Presentation pres) {
-	public MenuController(Frame frame, SlideViewer slv, Presentation pres, CommandFactory comFac){
+	public MenuController(Frame frame, SlideViewer slv, CommandFactory comFac){
 		
 		//commands
 		//nextSlideCommand = new CommandNextSlide(slideViewer);

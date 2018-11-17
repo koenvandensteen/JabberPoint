@@ -5,9 +5,8 @@ import java.io.IOException;
 
 import view.SlideViewer;
 import view.SlideViewerFrame;
-import model.Accessor;
+import model.AccessorFactory;
 import model.Presentation;
-import model.XMLAccessor;
 
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
@@ -30,20 +29,17 @@ public class JabberPoint {
 
 	/** Het Main Programma */
 	public static void main(String argv[]) {
-		
-		//Presentation presentation = new Presentation();
-		//new SlideViewerFrame(JABVERSION, presentation);
-		
-		Presentation presentation = new Presentation();
-		SlideViewer slideViewer = new SlideViewer(presentation);
-		new SlideViewerFrame(JABVERSION, slideViewer, presentation);
+
+		Presentation presentation;	
 		try {
 			if (argv.length == 0) { // een demo presentatie
-				Accessor.getDemoAccessor().loadFile(presentation, "");
+				presentation = AccessorFactory.GetFactory("").CreateReader().Read("");
 			} else {
-				new XMLAccessor().loadFile(presentation, argv[0]);
+				presentation = AccessorFactory.GetFactory(".xml").CreateReader().Read(argv[0]);
 			}
+			SlideViewer slideViewer = new SlideViewer(presentation);
 			slideViewer.setSlideNumber(0);
+			new SlideViewerFrame(JABVERSION, slideViewer);
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,

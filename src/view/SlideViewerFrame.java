@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 import javax.swing.JFrame;
-import model.Presentation;
 import controller.CommandFactory;
 import controller.KeyController;
 import controller.MenuController;
@@ -29,22 +28,22 @@ public class SlideViewerFrame extends JFrame {
 	private CommandFactory comFac;
 	
 	//public SlideViewerFrame(String title, Presentation presentation) {
-	public SlideViewerFrame(String title, SlideViewer slideViewer, Presentation pres){
+	public SlideViewerFrame(String title, SlideViewer slideViewer){
 		super(title);
 		// create command factory
-		comFac = new CommandFactory(this, slideViewer, pres);		
+		comFac = new CommandFactory(this, slideViewer);		
 		//SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(this, pres);
+		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(this, slideViewer.GetPresentation());
 		//presentation.setShowView(slideViewerComponent);
 		slideViewer.setShowView(slideViewerComponent);
 		//setupWindow(slideViewerComponent, presentation);
-		setupWindow(slideViewerComponent, slideViewer, pres);
+		setupWindow(slideViewerComponent, slideViewer);
 	}
 
 // De GUI opzetten
 	//public void setupWindow(SlideViewerComponent 
 	//		slideViewerComponent, Presentation presentation) {
-	public void setupWindow(SlideViewerComponent slideViewerComponent, SlideViewer slideViewer, Presentation pres){
+	public void setupWindow(SlideViewerComponent slideViewerComponent, SlideViewer slideViewer){
 		setTitle(JABTITLE);
 		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
@@ -53,7 +52,7 @@ public class SlideViewerFrame extends JFrame {
 			});
 		getContentPane().add(slideViewerComponent);
 		addKeyListener(new KeyController(comFac)); // een controller toevoegen
-		setMenuBar(new MenuController(this, slideViewer, pres, comFac));	// nog een controller toevoegen
+		setMenuBar(new MenuController(this, slideViewer, comFac));	// nog een controller toevoegen
 		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
 		setVisible(true);		
 	}
