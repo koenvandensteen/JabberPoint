@@ -51,15 +51,26 @@ public class MenuController extends MenuBar {
 	protected static final String IOEX = "IO Exception: ";
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
+	
+	//commandos
+	Command nextSlideCommand = new CommandNextSlide(slideViewer);
+	Command prevSlideCommand = new CommandPreviousSlide(slideViewer);
+	Command slideNumCommand = new CommandSlideByNumber(slideViewer);
+	Command nextItemCommand = new CommandNextItem(slideViewer);
+	Command prevItemCommand = new CommandPreviousItem(slideViewer);
+	Command allItemsCommand = new CommandShowAllItems(slideViewer);
+	Command exitCommand = new CommandExit(slideViewer);	
+	
 
 	//public MenuController(Frame frame, Presentation pres) {
 	public MenuController(Frame frame, SlideViewer slv, Presentation pres){
 		parent = frame;
 		presentation = pres;
-		System.out.println("hoe presentatie hier wegwerken?");
 		slideViewer = slv;
 		
 		MenuItem menuItem;
+		
+		//file menu
 		Menu fileMenu = new Menu(FILE);
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
