@@ -10,12 +10,6 @@ public class SlideViewer {
 private SlideViewerComponent slideViewComponent;
 private Presentation presentation;
 	
-//	public SlideViewer(SlideViewerComponent slideViewComponent, Presentation presentation) {
-//		this.slideViewComponent = slideViewComponent;
-//		this.presentation = presentation;
-//	
-//		clear();
-//	}
 	public void SetPresentation(Presentation presentation)
 	{
 		this.presentation = presentation;
@@ -30,7 +24,6 @@ private Presentation presentation;
 	public SlideViewer(Presentation presentation) {
 		clear();
 		this.presentation = presentation;	
-
 	}
 	
 	public void setShowView(SlideViewerComponent slideViewerComponent) {
@@ -69,7 +62,12 @@ private Presentation presentation;
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
 		if(presentation != null)
+		{
 			presentation.clear();
+			setSlideNumber(0);
+		}
+			
+
 	}
 	
 	// togglet het weergeven in één keer (per slide)
@@ -157,6 +155,10 @@ private Presentation presentation;
 	public void setSlideNumber(int number) {
 		presentation.setSlideNumber(number);
 		Slide workSlide = presentation.getCurrentSlide();
+		
+		if(workSlide == null)
+			return;
+		
 		//draw only all items if the flag isn't set
 		if(workSlide.isDrawAllItems()){
 			showAll();

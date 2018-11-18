@@ -34,14 +34,7 @@ public class MenuController extends MenuBar {
 	protected static final String PREV = "Prev slide";
 	protected static final String SAVE = "Save";
 	protected static final String VIEW = "View";
-	
-	//errors
-//	protected static final String TESTFILE = "test.xml";
-//	protected static final String SAVEFILE = "dump.xml";
-//	protected static final String IOEX = "IO Exception: ";
-//	protected static final String LOADERR = "Load Error";
-//	protected static final String SAVEERR = "Save Error";
-	
+		
 	//menu expansion
 	protected static final String NEXT_ITEM = "Next item";
 	protected static final String PREV_ITEM = "Prev item";
@@ -67,12 +60,9 @@ public class MenuController extends MenuBar {
 	private Command toggleAllItemsCommand;
 	private Command numItemsCommand;
 
-
-	//public MenuController(Frame frame, Presentation pres) {
 	public MenuController(Frame frame, SlideViewer slv, CommandFactory comFac){
 		
 		//commands
-		//nextSlideCommand = new CommandNextSlide(slideViewer);
 		nextSlideCommand = comFac.createNextSlideCMD();
 		prevSlideCommand = comFac.createPreviousSlideCMD();
 		nextItemCommand = comFac.createNextItemCMD();
@@ -223,8 +213,6 @@ public class MenuController extends MenuBar {
 		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
 	}
 	
-	
-
 // een menu-item aanmaken
 	public MenuItem mkMenuItem(String name) {
 		return new MenuItem(name, new MenuShortcut(name.charAt(0)));
