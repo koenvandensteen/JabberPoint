@@ -18,27 +18,10 @@ import java.awt.event.KeyAdapter;
  */
 
 public class KeyController extends KeyAdapter {
-
-	private Command nextSlideCommand;
-	private Command prevSlideCommand;
-	private Command nextItemCommand;
-	private Command prevItemCommand;
-	private Command allItemsCommand;
-	private Command clearItemsCommand;
-	private Command exitCommand;
-	private Command toggleCommand;
-	private Command nullCommand;
-
+	
+	private CommandFactory comFac;
+	
 	public KeyController(CommandFactory comFac) {
-		nextSlideCommand = comFac.createNextSlideCMD();
-		prevSlideCommand = comFac.createPreviousSlideCMD();
-		nextItemCommand = comFac.createNextItemCMD();
-		prevItemCommand = comFac.createPreviousItemCMD();
-		allItemsCommand = comFac.createShowAllOrNextCMD();
-		clearItemsCommand = comFac.createClearItemsOrBackCMD();
-		exitCommand = comFac.createExitCMD();
-		toggleCommand = comFac.createToggleItemsCMD();
-		nullCommand = comFac.createNullCMD();
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
@@ -49,50 +32,49 @@ public class KeyController extends KeyAdapter {
 		case KeyEvent.VK_PAGE_DOWN:
 		case KeyEvent.VK_ENTER:
 			// unconditional next slide
-			selectedCommand = nextSlideCommand;
+			selectedCommand = comFac.createNextSlideCMD();
 			break;
 		case KeyEvent.VK_DOWN:
 		case '+':
 			// next item / next slide (if all items shown)
-			selectedCommand = nextItemCommand;
+			selectedCommand = comFac.createNextItemCMD();
 			break;
 		case KeyEvent.VK_PAGE_UP:
 		case KeyEvent.VK_BACK_SPACE:
 			// unconditional previous slide
-			selectedCommand = prevSlideCommand;
+			selectedCommand = comFac.createPreviousSlideCMD();
 			break;
 		case KeyEvent.VK_UP:
 		case '-':
 			// previous item / previous slide (if no items shown)
-			selectedCommand = prevItemCommand;
+			selectedCommand = comFac.createPreviousItemCMD();
 			break;
 		case 'q':
 		case 'Q':
 		case KeyEvent.VK_ESCAPE:
 			// exit the application
-			selectedCommand = exitCommand;
+			selectedCommand = comFac.createExitCMD();
 			break;
 		case KeyEvent.VK_RIGHT:
 			// next slide, all items
-			selectedCommand = allItemsCommand;
+			selectedCommand = comFac.createShowAllOrNextCMD();
 			break;
 		case KeyEvent.VK_LEFT:
 			// previous slide, all items
-			selectedCommand = clearItemsCommand;
+			selectedCommand = comFac.createClearItemsOrBackCMD();
 			break;
 		case 't':
 		case 'T':
 			// show all
-			selectedCommand = toggleCommand;
-			break; // wordt nooit bereikt als het goed is
+			selectedCommand =  comFac.createToggleItemsCMD();
+			break;
 		default:
 			// indien we een niet geregistreerde toets lezen voeren we een commando uit dat
 			// niets doet
-			selectedCommand = nullCommand;
+			selectedCommand = comFac.createNullCMD();
 			break;
 		}
 
 		CommandInvoker.executeCommand(selectedCommand);
-
 	}
 }

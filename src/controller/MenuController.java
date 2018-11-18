@@ -47,44 +47,12 @@ public class MenuController extends MenuBar {
 	protected static final String CLR_ITEM = "Clear items/Prev slide";
 	protected static final String TOGGLE = "Toggle item navigation";
 	protected static final String NUM_ITEMS = "Display #items";
-
-	// Commands
-	private Command nextSlideCommand;
-	private Command prevSlideCommand;
-	private Command nextItemCommand;
-	private Command prevItemCommand;
-	private Command showAllItemsCommand;
-	private Command clearAllItemsCommand;
-	private Command exitCommand;
-	private Command slideNumCommand;
-
-	private Command openCommand;
-	private Command saveCommand;
-	private Command newCommand;
-	private Command showAboutBoxCommand;
-	private Command toggleAllItemsCommand;
-	private Command numItemsCommand;
-
+	
+	private CommandFactory commandFactory;
+	
 	public MenuController(Frame frame, SlideViewer slv, CommandFactory comFac) {
 
-		// commands
-		nextSlideCommand = comFac.createNextSlideCMD();
-		prevSlideCommand = comFac.createPreviousSlideCMD();
-		nextItemCommand = comFac.createNextItemCMD();
-		prevItemCommand = comFac.createPreviousItemCMD();
-		showAllItemsCommand = comFac.createShowAllOrNextCMD();
-		clearAllItemsCommand = comFac.createClearItemsOrBackCMD();
-		exitCommand = comFac.createExitCMD();
-		slideNumCommand = comFac.createSlideByNumberCMD();
-
-		openCommand = comFac.createOpenCMD();
-		saveCommand = comFac.createSaveCMD();
-		newCommand = comFac.createNewCMD();
-		showAboutBoxCommand = comFac.createShowAboutBoxCMD();
-		toggleAllItemsCommand = comFac.createToggleItemsCMD();
-		numItemsCommand = comFac.createAmountItemsCMD();
-		//
-
+		this.commandFactory = comFac;
 		MenuItem menuItem;
 
 		//
@@ -94,24 +62,21 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = openCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createOpenCMD());
 			}
 		});
 		// NEW
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = newCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createNewCMD());
 			}
 		});
 		// SAVE
 		fileMenu.add(menuItem = mkMenuItem(SAVE));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Command c = saveCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createSaveCMD());
 			}
 		});
 		// EXIT
@@ -119,8 +84,7 @@ public class MenuController extends MenuBar {
 		fileMenu.add(menuItem = mkMenuItem(EXIT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = exitCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createExitCMD());
 			}
 		});
 		add(fileMenu);
@@ -133,72 +97,63 @@ public class MenuController extends MenuBar {
 		viewMenu.add(menuItem = mkMenuItem(NEXT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = nextSlideCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createNextSlideCMD());
 			}
 		});
 		// previous slide
 		viewMenu.add(menuItem = mkMenuItem(PREV));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = prevSlideCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createPreviousSlideCMD());
 			}
 		});
 		// go to slide
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = slideNumCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createSlideByNumberCMD());
 			}
 		});
 		// next slide
 		viewMenu.add(menuItem = mkMenuItem(NEXT_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = nextItemCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createNextItemCMD());
 			}
 		});
 		// previous item
 		viewMenu.add(menuItem = mkMenuItem(PREV_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = prevItemCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createPreviousItemCMD());
 			}
 		});
 		// show all items
 		viewMenu.add(menuItem = mkMenuItem(ALL_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = showAllItemsCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createShowAllOrNextCMD());
 			}
 		});
 		// show all items
 		viewMenu.add(menuItem = mkMenuItem(CLR_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = clearAllItemsCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createClearItemsOrBackCMD());
 			}
 		});
 		// toggle all items
 		viewMenu.add(menuItem = mkMenuItem(TOGGLE));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = toggleAllItemsCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createToggleItemsCMD());
 			}
 		});
 		// show a number of items
 		viewMenu.add(menuItem = mkMenuItem(NUM_ITEMS));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = numItemsCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createAmountItemsCMD());
 			}
 		});
 		add(viewMenu);
@@ -210,8 +165,7 @@ public class MenuController extends MenuBar {
 		helpMenu.add(menuItem = mkMenuItem(ABOUT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
-				Command c = showAboutBoxCommand;
-				CommandInvoker.executeCommand(c);
+				CommandInvoker.executeCommand(commandFactory.createShowAboutBoxCMD());
 			}
 		});
 		setHelpMenu(helpMenu); // nodig for portability (Motif, etc.).
