@@ -31,7 +31,7 @@ public class DemoReader extends Reader {
 	    slide.append(4, "Volgende slide: PgDn of Enter");
 	    slide.append(4, "Vorige slide: PgUp of back-space");
 		slide.append(4, "Toggle item-per-item laden: t of T");
-	    slide.append(4, "Stoppen: q of Q");
+	    slide.append(4, "Stoppen: escape, q of Q");
 		slide.append(4, "* als alle items weergegeven zijn zal de volgende slide geladen worden");
 		slide.append(4, "** als er geen items zijn zal de vorige slide geladen worden");
 		presentation.append(slide);
