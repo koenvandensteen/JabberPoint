@@ -8,11 +8,11 @@ import view.SlideViewer;
  * Command that shows the previous slide item of the current slide.
  * </p>
  */
-public class CommandPreviousItem implements Command {
+public class CmdPreviousItem implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandPreviousItem(SlideViewer slideViewer) {
+	public CmdPreviousItem(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

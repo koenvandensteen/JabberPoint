@@ -7,11 +7,11 @@ import view.SlideViewer;
  * Command for showing the next item of the current slide.
  * </p>
  */
-public class CommandNextItem implements Command {
+public class CmdNextItem implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandNextItem(SlideViewer slideViewer) {
+	public CmdNextItem(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

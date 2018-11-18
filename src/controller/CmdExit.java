@@ -8,11 +8,11 @@ import view.SlideViewer;
  * Exits the program.
  * </p>
  */
-public class CommandExit implements Command {
+public class CmdExit implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandExit(SlideViewer slideViewer) {
+	public CmdExit(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

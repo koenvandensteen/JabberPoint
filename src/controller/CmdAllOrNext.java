@@ -10,11 +10,11 @@ import view.SlideViewer;
  * </p>
  */
 
-public class CommandAllOrNext implements Command {
+public class CmdAllOrNext implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandAllOrNext(SlideViewer slideViewer) {
+	public CmdAllOrNext(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

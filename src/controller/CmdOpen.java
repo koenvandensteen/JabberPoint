@@ -15,7 +15,7 @@ import view.SlideViewer;
  * Command that opens a new slide.
  * </p>
  */
-public class CommandOpen implements Command {
+public class CmdOpen implements Command {
 
 	protected static final String TESTFILE = "test.xml";
 	protected static final String IOEX = "IO Exception: ";
@@ -24,7 +24,7 @@ public class CommandOpen implements Command {
 	private SlideViewer slideViewer;
 	private Frame parent;
 
-	public CommandOpen(SlideViewer slideViewer, Frame parent) {
+	public CmdOpen(SlideViewer slideViewer, Frame parent) {
 		this.slideViewer = slideViewer;
 		this.parent = parent;
 	}

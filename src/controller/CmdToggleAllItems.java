@@ -9,11 +9,11 @@ import view.SlideViewer;
  * </p>
  */
 
-public class CommandToggleAllItems implements Command {
+public class CmdToggleAllItems implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandToggleAllItems(SlideViewer slideViewer) {
+	public CmdToggleAllItems(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

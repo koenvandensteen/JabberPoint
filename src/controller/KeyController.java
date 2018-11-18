@@ -22,6 +22,7 @@ public class KeyController extends KeyAdapter {
 	private CommandFactory comFac;
 	
 	public KeyController(CommandFactory comFac) {
+		this.comFac = comFac;
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {

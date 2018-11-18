@@ -9,11 +9,11 @@ import view.SlideViewer;
  * </p>
  */
 
-public class CommandSlideByNumber implements Command {
+public class CmdSlideByNumber implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandSlideByNumber(SlideViewer slideViewer) {
+	public CmdSlideByNumber(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

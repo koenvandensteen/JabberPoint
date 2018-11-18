@@ -8,11 +8,11 @@ import view.SlideViewer;
  * Clear the current slide if already cleared we go to the previous slide.
  * </p>
  */
-public class CommandClearOrBack implements Command {
+public class CmdClearOrBack implements Command {
 
 	private SlideViewer slideViewer;
 
-	public CommandClearOrBack(SlideViewer slideViewer) {
+	public CmdClearOrBack(SlideViewer slideViewer) {
 		this.slideViewer = slideViewer;
 	}
 

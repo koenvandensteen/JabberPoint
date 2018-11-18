@@ -10,11 +10,11 @@ import view.AboutBox;
  * </p>
  */
 
-public class CommandShowAboutBox implements Command {
+public class CmdShowAboutBox implements Command {
 
 	private Frame parent;
 
-	public CommandShowAboutBox(Frame parent) {
+	public CmdShowAboutBox(Frame parent) {
 		this.parent = parent;
 	}
 

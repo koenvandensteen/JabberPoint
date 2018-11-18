@@ -21,59 +21,59 @@ public class CommandFactory {
 	}
 
 	public Command createNextSlideCMD() {
-		return new CommandNextSlide(slideViewer);
+		return new CmdNextSlide(slideViewer);
 	}
 
 	public Command createPreviousSlideCMD() {
-		return new CommandPreviousSlide(slideViewer);
+		return new CmdPreviousSlide(slideViewer);
 	}
 
 	public Command createNextItemCMD() {
-		return new CommandNextItem(slideViewer);
+		return new CmdNextItem(slideViewer);
 	}
 
 	public Command createPreviousItemCMD() {
-		return new CommandPreviousItem(slideViewer);
+		return new CmdPreviousItem(slideViewer);
 	}
 
 	public Command createShowAllOrNextCMD() {
-		return new CommandAllOrNext(slideViewer);
+		return new CmdAllOrNext(slideViewer);
 	}
 
 	public Command createClearItemsOrBackCMD() {
-		return new CommandClearOrBack(slideViewer);
+		return new CmdClearOrBack(slideViewer);
 	}
 
 	public Command createExitCMD() {
-		return new CommandExit(slideViewer);
+		return new CmdExit(slideViewer);
 	}
 
 	public Command createSlideByNumberCMD() {
-		return new CommandSlideByNumber(slideViewer);
+		return new CmdSlideByNumber(slideViewer);
 	}
 
 	public Command createOpenCMD() {
-		return new CommandOpen(slideViewer, parent);
+		return new CmdOpen(slideViewer, parent);
 	}
 
 	public Command createSaveCMD() {
-		return new CommandSave(parent, slideViewer.GetPresentation());
+		return new CmdSave(parent, slideViewer.GetPresentation());
 	}
 
 	public Command createNewCMD() {
-		return new CommandNew(slideViewer);
+		return new CmdNew(slideViewer);
 	}
 
 	public Command createShowAboutBoxCMD() {
-		return new CommandShowAboutBox(parent);
+		return new CmdShowAboutBox(parent);
 	}
 
 	public Command createToggleItemsCMD() {
-		return new CommandToggleAllItems(slideViewer);
+		return new CmdToggleAllItems(slideViewer);
 	}
 
 	public Command createAmountItemsCMD() {
-		return new CommandAmountItems(slideViewer);
+		return new CmdAmountItems(slideViewer);
 	}
 
 	public Command createNullCMD() {

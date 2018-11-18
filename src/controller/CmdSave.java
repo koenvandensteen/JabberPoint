@@ -16,7 +16,7 @@ import model.Writer;
  * </p>
  */
 
-public class CommandSave implements Command {
+public class CmdSave implements Command {
 
 	protected static final String SAVEFILE = "dump.xml";
 	protected static final String IOEX = "IO Exception: ";
@@ -25,7 +25,7 @@ public class CommandSave implements Command {
 	private Frame parent;
 	private Presentation presentation;
 
-	public CommandSave(Frame parent, Presentation presentation) {
+	public CmdSave(Frame parent, Presentation presentation) {
 		this.parent = parent;
 		this.presentation = presentation;
 	}
