@@ -1,4 +1,5 @@
 package controller;
+
 import java.awt.MenuBar;
 import java.awt.Frame;
 import java.awt.Menu;
@@ -9,7 +10,11 @@ import java.awt.event.ActionEvent;
 
 import view.SlideViewer;
 
-/** <p>De controller voor het menu</p>
+/**
+ * <p>
+ * The menu Controller
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -19,9 +24,9 @@ import view.SlideViewer;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 public class MenuController extends MenuBar {
-	
+
 	private static final long serialVersionUID = 227L;
-	
+
 	protected static final String ABOUT = "About";
 	protected static final String FILE = "File";
 	protected static final String EXIT = "Exit";
@@ -34,25 +39,25 @@ public class MenuController extends MenuBar {
 	protected static final String PREV = "Prev slide";
 	protected static final String SAVE = "Save";
 	protected static final String VIEW = "View";
-		
-	//menu expansion
+
+	// menu expansion
 	protected static final String NEXT_ITEM = "Next item";
 	protected static final String PREV_ITEM = "Prev item";
 	protected static final String ALL_ITEM = "All items/Next slide";
 	protected static final String CLR_ITEM = "Clear items/Prev slide";
 	protected static final String TOGGLE = "Toggle item navigation";
 	protected static final String NUM_ITEMS = "Display #items";
-	
-	//Commands
+
+	// Commands
 	private Command nextSlideCommand;
 	private Command prevSlideCommand;
 	private Command nextItemCommand;
 	private Command prevItemCommand;
 	private Command showAllItemsCommand;
 	private Command clearAllItemsCommand;
-	private Command exitCommand;	
+	private Command exitCommand;
 	private Command slideNumCommand;
-	
+
 	private Command openCommand;
 	private Command saveCommand;
 	private Command newCommand;
@@ -60,9 +65,9 @@ public class MenuController extends MenuBar {
 	private Command toggleAllItemsCommand;
 	private Command numItemsCommand;
 
-	public MenuController(Frame frame, SlideViewer slv, CommandFactory comFac){
-		
-		//commands
+	public MenuController(Frame frame, SlideViewer slv, CommandFactory comFac) {
+
+		// commands
 		nextSlideCommand = comFac.createNextSlideCMD();
 		prevSlideCommand = comFac.createPreviousSlideCMD();
 		nextItemCommand = comFac.createNextItemCMD();
@@ -71,7 +76,7 @@ public class MenuController extends MenuBar {
 		clearAllItemsCommand = comFac.createClearItemsOrBackCMD();
 		exitCommand = comFac.createExitCMD();
 		slideNumCommand = comFac.createSlideByNumberCMD();
-		
+
 		openCommand = comFac.createOpenCMD();
 		saveCommand = comFac.createSaveCMD();
 		newCommand = comFac.createNewCMD();
@@ -79,11 +84,11 @@ public class MenuController extends MenuBar {
 		toggleAllItemsCommand = comFac.createToggleItemsCMD();
 		numItemsCommand = comFac.createAmountItemsCMD();
 		//
-		
+
 		MenuItem menuItem;
-		
+
 		//
-		//FILE menu
+		// FILE menu
 		//
 		Menu fileMenu = new Menu(FILE);
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
@@ -92,13 +97,13 @@ public class MenuController extends MenuBar {
 				Command c = openCommand;
 				CommandInvoker.executeCommand(c);
 			}
-		} );
+		});
 		// NEW
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				Command c = newCommand;
-				CommandInvoker.executeCommand(c);				
+				CommandInvoker.executeCommand(c);
 			}
 		});
 		// SAVE
@@ -109,7 +114,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//EXIT
+		// EXIT
 		fileMenu.addSeparator();
 		fileMenu.add(menuItem = mkMenuItem(EXIT));
 		menuItem.addActionListener(new ActionListener() {
@@ -119,12 +124,12 @@ public class MenuController extends MenuBar {
 			}
 		});
 		add(fileMenu);
-		
+
 		//
 		// VIEW menu
 		//
 		Menu viewMenu = new Menu(VIEW);
-		//next slide
+		// next slide
 		viewMenu.add(menuItem = mkMenuItem(NEXT));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -132,7 +137,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//previous slide
+		// previous slide
 		viewMenu.add(menuItem = mkMenuItem(PREV));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -140,7 +145,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//go to slide
+		// go to slide
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -148,7 +153,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//next slide
+		// next slide
 		viewMenu.add(menuItem = mkMenuItem(NEXT_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -156,7 +161,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//previous item
+		// previous item
 		viewMenu.add(menuItem = mkMenuItem(PREV_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -164,7 +169,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//show all items
+		// show all items
 		viewMenu.add(menuItem = mkMenuItem(ALL_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -172,7 +177,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//show all items
+		// show all items
 		viewMenu.add(menuItem = mkMenuItem(CLR_ITEM));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -180,7 +185,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//toggle all items
+		// toggle all items
 		viewMenu.add(menuItem = mkMenuItem(TOGGLE));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -188,7 +193,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		//show a number of items
+		// show a number of items
 		viewMenu.add(menuItem = mkMenuItem(NUM_ITEMS));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -197,8 +202,7 @@ public class MenuController extends MenuBar {
 			}
 		});
 		add(viewMenu);
-		
-		
+
 		//
 		// HELP menu
 		//
@@ -210,9 +214,9 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(c);
 			}
 		});
-		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
+		setHelpMenu(helpMenu); // nodig for portability (Motif, etc.).
 	}
-	
+
 // een menu-item aanmaken
 	public MenuItem mkMenuItem(String name) {
 		return new MenuItem(name, new MenuShortcut(name.charAt(0)));

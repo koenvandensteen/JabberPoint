@@ -1,5 +1,13 @@
 package model;
 
+/**
+ * DemoAccesorFacotry
+ * <p>
+ * Concrete factory of the AccesorFactory abstract factory pattern. It makes it
+ * possible to read demo data.
+ * </p>
+ */
+
 public class DemoAccesorFactory extends AccessorFactory {
 
 	@Override

@@ -2,6 +2,13 @@ package model;
 
 import java.io.IOException;
 
+/**
+ * DemoWriter
+ * <p>
+ * This class is used to save a demo file, which is not possible.
+ * </p>
+ */
+
 public class DemoWriter extends Writer {
 
 	@Override

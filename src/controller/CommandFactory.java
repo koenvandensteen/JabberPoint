@@ -4,73 +4,79 @@ import java.awt.Frame;
 
 import view.SlideViewer;
 
+/**
+ * CommandFactory
+ * <p>
+ * Factory to create all the different commands.
+ * </p>
+ */
 public class CommandFactory {
-	
+
 	private SlideViewer slideViewer;
 	private Frame parent;
-	
-	public CommandFactory(Frame parent,SlideViewer slideViewer){
+
+	public CommandFactory(Frame parent, SlideViewer slideViewer) {
 		this.parent = parent;
 		this.slideViewer = slideViewer;
 	}
-	
-	public Command createNextSlideCMD(){
+
+	public Command createNextSlideCMD() {
 		return new CommandNextSlide(slideViewer);
 	}
-	
-	public Command createPreviousSlideCMD(){
+
+	public Command createPreviousSlideCMD() {
 		return new CommandPreviousSlide(slideViewer);
 	}
-	
-	public Command createNextItemCMD(){
+
+	public Command createNextItemCMD() {
 		return new CommandNextItem(slideViewer);
 	}
-	
-	public Command createPreviousItemCMD(){
+
+	public Command createPreviousItemCMD() {
 		return new CommandPreviousItem(slideViewer);
 	}
-	
-	public Command createShowAllOrNextCMD(){
+
+	public Command createShowAllOrNextCMD() {
 		return new CommandAllOrNext(slideViewer);
 	}
-	
-	public Command createClearItemsOrBackCMD(){
+
+	public Command createClearItemsOrBackCMD() {
 		return new CommandClearOrBack(slideViewer);
 	}
-	
-	public Command createExitCMD(){
-		return new CommandExit(slideViewer);	
+
+	public Command createExitCMD() {
+		return new CommandExit(slideViewer);
 	}
-	
-	public Command createSlideByNumberCMD(){
+
+	public Command createSlideByNumberCMD() {
 		return new CommandSlideByNumber(slideViewer);
 	}
 
-	public Command createOpenCMD(){
+	public Command createOpenCMD() {
 		return new CommandOpen(slideViewer, parent);
 	}
-	
-	public Command createSaveCMD(){
+
+	public Command createSaveCMD() {
 		return new CommandSave(parent, slideViewer.GetPresentation());
 	}
-	
-	public Command createNewCMD(){
+
+	public Command createNewCMD() {
 		return new CommandNew(slideViewer);
 	}
-	
-	public Command createShowAboutBoxCMD(){
-		return new  CommandShowAboutBox(parent);
+
+	public Command createShowAboutBoxCMD() {
+		return new CommandShowAboutBox(parent);
 	}
-	
-	public Command createToggleItemsCMD(){
+
+	public Command createToggleItemsCMD() {
 		return new CommandToggleAllItems(slideViewer);
 	}
-	
-	public Command createAmountItemsCMD(){
+
+	public Command createAmountItemsCMD() {
 		return new CommandAmountItems(slideViewer);
 	}
-	
-	public Command createNullCMD(){
+
+	public Command createNullCMD() {
 		return new NullCommand();
 	}
 

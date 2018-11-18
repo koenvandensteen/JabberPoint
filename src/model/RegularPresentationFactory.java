@@ -1,10 +1,17 @@
 package model;
 
+/**
+ * RegularPresentationFactory
+ * <p>
+ * concrete factory of the abstract presentation factory class. Which is used to
+ * generate regular type of presentations.
+ * </p>
+ */
+
 public class RegularPresentationFactory extends PresentationFactory {
 
 	@Override
 	public Presentation CreatePresentation() {
-		// TODO Auto-generated method stub
 		return new Presentation();
 	}
 

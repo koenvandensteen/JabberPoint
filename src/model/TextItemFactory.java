@@ -1,14 +1,18 @@
 package model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
+/**
+ * StyelDefault
+ * <p>
+ * Text item Factory is the conrecte factory of the Abstract SlideItemFactory
+ * and is used to create new slide items based on their level and their content.
+ * </p>
+ */
 
 public class TextItemFactory extends SlideItemFactory {
 
 	@Override
 	public SlideItem CreateSlideItem(int level, String content) {
-		return new TextItem(level,content);
+		return new TextItem(level, content);
 	}
 
 }

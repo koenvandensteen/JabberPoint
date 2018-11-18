@@ -1,7 +1,12 @@
 package model;
+
 import java.util.Vector;
 
-/** <p>Een slide. Deze klasse heeft tekenfunctionaliteit.</p>
+/**
+ * <p>
+ * Slide holds all the needed information to draw Slides.
+ * </p>
+ * 
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -17,39 +22,34 @@ public class Slide {
 	/* Geen String meer maar een TextItem */
 	protected TextItem title; // de titel wordt apart bewaard
 	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
-	
+
 	private int numberofItemsToDraw = 0;
 	private boolean drawAllItem = false;
-	
-	public boolean isDrawAllItems(){
+
+	public boolean isDrawAllItems() {
 		return drawAllItem;
 	}
-	
-	public int GetNumberOfItemsToDraw()
-	{
-		return drawAllItem ? items.size()  : numberofItemsToDraw;
+
+	public int GetNumberOfItemsToDraw() {
+		return drawAllItem ? items.size() : numberofItemsToDraw;
 	}
-	
-	public void IncrementItemsToDraw()
-	{
+
+	public void IncrementItemsToDraw() {
 		++numberofItemsToDraw;
 	}
-	
-	public void DecrementItemsToDraw()
-	{
+
+	public void DecrementItemsToDraw() {
 		--numberofItemsToDraw;
 	}
-	
-	public void SetitemsToDraw(int nritems)
-	{
+
+	public void SetitemsToDraw(int nritems) {
 		numberofItemsToDraw = nritems <= items.size() ? nritems : items.size();
 	}
-	
-	public void ToggleDrawAllitems()
-	{
+
+	public void ToggleDrawAllitems() {
 		drawAllItem = !drawAllItem;
 	}
-	
+
 	public Slide() {
 		items = new Vector<SlideItem>();
 	}
@@ -81,7 +81,7 @@ public class Slide {
 
 	// geef het betreffende SlideItem
 	public SlideItem getSlideItem(int number) {
-		return (SlideItem)items.elementAt(number);
+		return (SlideItem) items.elementAt(number);
 	}
 
 	// geef alle SlideItems in een Vector

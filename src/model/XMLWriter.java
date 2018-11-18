@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
 
+/**
+ * XMLWriter
+ * <p>
+ * This reader is used to write away the current presentation as XML data.
+ * </p>
+ */
+
 public class XMLWriter extends Writer {
 
 	@Override
@@ -16,24 +23,22 @@ public class XMLWriter extends Writer {
 		out.print("<showtitle>");
 		out.print(presentation.getTitle());
 		out.println("</showtitle>");
-		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
+		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
 			Slide slide = presentation.getSlide(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
 			Vector<SlideItem> slideItems = slide.getSlideItems();
-			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
+			for (int itemNumber = 0; itemNumber < slideItems.size(); itemNumber++) {
 				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
-				out.print("<item kind="); 
+				out.print("<item kind=");
 				if (slideItem instanceof TextItem) {
 					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
-					out.print( ( (TextItem) slideItem).getText());
-				}
-				else {
+					out.print(((TextItem) slideItem).getText());
+				} else {
 					if (slideItem instanceof BitmapItem) {
 						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-						out.print( ( (BitmapItem) slideItem).getName());
-					}
-					else {
+						out.print(((BitmapItem) slideItem).getName());
+					} else {
 						System.out.println("Ignoring " + slideItem);
 					}
 				}

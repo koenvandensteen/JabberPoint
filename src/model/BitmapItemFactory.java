@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * BitmapitemFactory
+ * <p>
+ * Concrete factory of the SlideItem Abstract factory. Used to create bitmap items.
+ * </p>
+ */
+
 public class BitmapItemFactory extends SlideItemFactory {
 
 	@Override
