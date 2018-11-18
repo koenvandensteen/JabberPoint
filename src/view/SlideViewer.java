@@ -175,7 +175,7 @@ private Presentation presentation;
 		presentation.getCurrentSlide().SetitemsToDraw(itemCount);
 	}
 		
-	// helper function to request 1 int of input
+	// helper function to request int input
 	private int getIntegerField(String arg){
 		String questionStr = JOptionPane.showInputDialog((Object)arg);
 		return Integer.parseInt(questionStr);
