@@ -13,6 +13,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import model.SlideFactory.SupportedSlideTypes;
+
 public class XMLReader extends Reader {
 
     /** Default API to use. */
@@ -49,7 +51,8 @@ public class XMLReader extends Reader {
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++) {
 				Element xmlSlide = (Element) slides.item(slideNumber);
-				Slide slide = new Slide();
+				//hard code to ITEMSLIDE if we got different types of slides we could add logic to the factory to support more and swap accordingly.
+				Slide slide =  SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
 				
@@ -88,11 +91,11 @@ public class XMLReader extends Reader {
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent()));
+			slide.append(new TextItem(level, item.getTextContent())); //factory here
 		}
 		else {
 			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent()));
+				slide.append(new BitmapItem(level, item.getTextContent())); //factory here
 			}
 			else {
 				System.err.println(UNKNOWNTYPE);

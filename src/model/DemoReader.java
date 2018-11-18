@@ -2,6 +2,8 @@ package model;
 
 import java.io.IOException;
 
+import model.SlideFactory.SupportedSlideTypes;
+
 public class DemoReader extends Reader {
 
 	@Override
@@ -9,8 +11,8 @@ public class DemoReader extends Reader {
 		Presentation presentation = new Presentation();
 		
 		presentation.setTitle("Demo Presentation");
-		Slide slide;
-		slide = new Slide();
+		//hard code to ITEMSLIDE if we got different types of slides we could add logic to the factory to support more and swap accordingly.
+		Slide slide = SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 		slide.setTitle("JabberPoint");
 		slide.append(1, "Het Java Presentatie Tool");
 		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
@@ -31,8 +33,8 @@ public class DemoReader extends Reader {
 		slide.append(4, "* als alle items weergegeven zijn zal de volgende slide geladen worden");
 		slide.append(4, "** als er geen items zijn zal de vorige slide geladen worden");
 		presentation.append(slide);
-
-		slide = new Slide();
+		//hard code to ITEMSLIDE if we got different types of slides we could add logic to the factory to support more and swap accordingly.
+		slide = SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 		slide.setTitle("Demonstratie van levels en stijlen");
 		slide.append(1, "Level 1");
 		slide.append(2, "Level 2");
@@ -42,8 +44,8 @@ public class DemoReader extends Reader {
 		slide.append(3, "Zo ziet level 3 er uit");
 		slide.append(4, "En dit is level 4");
 		presentation.append(slide);
-
-		slide = new Slide();
+		//hard code to ITEMSLIDE if we got different types of slides we could add logic to the factory to support more and swap accordingly.
+		slide = SlideFactory.GetFactory(SupportedSlideTypes.ITEMSLIDE).CreateSLide();
 		slide.setTitle("De derde slide");
 		slide.append(1, "Om een nieuwe presentatie te openen,");
 		slide.append(2, "gebruik File->Open uit het menu.");
