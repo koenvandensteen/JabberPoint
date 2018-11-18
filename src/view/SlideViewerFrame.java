@@ -27,22 +27,14 @@ public class SlideViewerFrame extends JFrame {
 	
 	private CommandFactory comFac;
 	
-	//public SlideViewerFrame(String title, Presentation presentation) {
 	public SlideViewerFrame(String title, SlideViewer slideViewer){
 		super(title);
-		// create command factory
 		comFac = new CommandFactory(this, slideViewer);		
-		//SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(this, slideViewer.GetPresentation());
-		//presentation.setShowView(slideViewerComponent);
 		slideViewer.setShowView(slideViewerComponent);
-		//setupWindow(slideViewerComponent, presentation);
 		setupWindow(slideViewerComponent, slideViewer);
 	}
 
-// De GUI opzetten
-	//public void setupWindow(SlideViewerComponent 
-	//		slideViewerComponent, Presentation presentation) {
 	public void setupWindow(SlideViewerComponent slideViewerComponent, SlideViewer slideViewer){
 		setTitle(JABTITLE);
 		addWindowListener(new WindowAdapter() {

@@ -43,7 +43,6 @@ public class SlideViewerComponent extends JComponent {
 	ItemDrawerBridge itemDrawer;
 
 	public SlideViewerComponent(JFrame frame, Presentation pres) {
-	//public SlideViewerComponent(JFrame frame){
 		setBackground(BGCOLOR); 
 		presentation = pres;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
@@ -53,26 +52,12 @@ public class SlideViewerComponent extends JComponent {
 	public Dimension getPreferredSize() {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}
-
-//	public void update(Presentation presentation, Slide data) {
-//		if (data == null) {
-//			repaint();
-//			return;
-//		}
-//		this.presentation = presentation;
-//		this.slide = data;
-//		repaint();
-//		frame.setTitle(presentation.getTitle());
-//	}
 	
 	public void update(String title, Slide data) {
-	//public void update(Presentation pres, Slide data){
 		if (data == null) {
 			repaint();
 			return;
 		}
-		//this.presentation = pres;// in andere versie comment
-		//String title = presentation.getTitle();//in andere versie comment
 		this.slide = data;
 		repaint();
 		frame.setTitle(title);
@@ -86,9 +71,9 @@ public class SlideViewerComponent extends JComponent {
 			return;
 		}
 		g.setFont(labelFont);
-		g.setColor(COLOR);
+		g.setColor(COLOR);		
 		g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " +
-                 presentation.getSize(), XPOS, YPOS);
+                 presentation.getSize(), XPOS, YPOS);		
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		
 		draw(g, area, this);
@@ -103,7 +88,6 @@ public class SlideViewerComponent extends JComponent {
 	    
 		// De titel hoeft niet meer apart behandeld te worden 
 	    slideItem = slide.getTitle();
-	    //Style style = Style.getStyle(slideItem.getLevel());
 	    slideItem.draw(area.x, area.y, scale, g, view);
 	    
 	   y += slideItem.getBoundingBox(g, view, scale).height;
@@ -111,9 +95,6 @@ public class SlideViewerComponent extends JComponent {
 	    for (int number=0; number<slide.GetNumberOfItemsToDraw(); number++) {
 	      slideItem = slide.getSlideItems().elementAt(number);
 	      slideItem.draw(0, y, scale, g, view);
-	      
-	      //style = Style.getStyle(slideItem.getLevel());
-	      //slideItem.draw(area.x, y, scale, g, view);
 	      y += slideItem.getBoundingBox(g, view, scale).height;
 	    }
 	  }

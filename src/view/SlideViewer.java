@@ -34,6 +34,7 @@ private Presentation presentation;
 	
 	public void setShowView(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;
+		updateView();
 	}
 	
 	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
