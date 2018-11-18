@@ -3,41 +3,42 @@
 <presentation style="CLASSIC">
 <showtitle>Demo Presentation</showtitle>
 <slide style="MODERN">
-<item kind="text" styleElement="TITLE">JabberPoint</item>
-<item kind="text" styleElement="HEADER">Het Java Presentatie Tool</item>
-<item kind="text" styleElement="SUBHEADER">Copyright (c) 1996-2000: Ian Darwin</item>
-<item kind="text" styleElement="SUBHEADER">Copyright (c) 2000-now:</item>
-<item kind="text" styleElement="SUBHEADER">Gert Florijn en Sylvia Stuurman</item>
-<item kind="text" styleElement="SUBPARAGRAPH">Aangepast door V. Boerjan en K. van den Steen</item>
-<item kind="text" styleElement="SUBPARAGRAPH">JabberPoint aanroepen zonder bestandsnaam</item>
-<item kind="text" styleElement="SUBPARAGRAPH">laat deze presentatie zien</item>
-<item kind="text" styleElement="HEADER">Navigeren:</item>
-		<item kind="text" styleElement="SUBPARAGRAPH">Volgende item*: down-arrow</item>
-		<item kind="text" styleElement="SUBPARAGRAPH">Alle items*: right-arrow</item>
-	    <item kind="text" styleElement="SUBPARAGRAPH">Vorige item**: up-arrow</item>
-	    <item kind="text" styleElement="SUBPARAGRAPH">Clear slide**: left-arrow</item>
-	    <item kind="text" styleElement="SUBPARAGRAPH">Volgende slide: PgDn of Enter</item>
-	    <item kind="text" styleElement="SUBPARAGRAPH">Vorige slide: PgUp of back-space</item>
-		<item kind="text" styleElement="SUBPARAGRAPH">Toggle item-per-item laden: t of T</item>
-	    <item kind="text" styleElement="SUBPARAGRAPH">Stoppen: escape, q of Q</item>
-		<item kind="text" styleElement="SUBPARAGRAPH">* als alle items weergegeven zijn zal de volgende slide geladen worden</item>
-		<item kind="text" styleElement="SUBPARAGRAPH">** als er geen items zijn zal de vorige slide geladen worden</item>
+<title>JabberPoint XML-Demo</title>
+<item kind="text" level="1">Het Java Presentatie Tool</item>
+<item kind="text" level="2">Copyright (c) 1996-2000: Ian Darwin</item>
+<item kind="text" level="2">Copyright (c) 2000-now:</item>
+<item kind="text" level="2">Gert Florijn en Sylvia Stuurman</item>
+<item kind="text" level="4">Aangepast door V. Boerjan en K. van den Steen</item>
+<item kind="text" level="4">JabberPoint aanroepen zonder bestandsnaam</item>
+<item kind="text" level="4">laat deze presentatie zien</item>
+<item kind="text" level="3">Navigeren:</item>
+		<item kind="text" level="4">Volgende item*: down-arrow</item>
+		<item kind="text" level="4">Alle items*: right-arrow</item>
+	    <item kind="text" level="4">Vorige item**: up-arrow</item>
+	    <item kind="text" level="4">Clear slide**: left-arrow</item>
+	    <item kind="text" level="4">Volgende slide: PgDn of Enter</item>
+	    <item kind="text" level="4">Vorige slide: PgUp of back-space</item>
+		<item kind="text" level="4">Toggle item-per-item laden: t of T</item>
+	    <item kind="text" level="4">Stoppen: escape, q of Q</item>
+		<item kind="text" level="4">* als alle items weergegeven zijn zal de volgende slide geladen worden</item>
+		<item kind="text" level="4">** als er geen items zijn zal de vorige slide geladen worden</item>
 </slide>
 <slide style="CLASSIC">
-<item kind="text" styleElement="TITLE">Demonstratie van levels en stijlen (niet meer relevant)</item>
-<item kind="text" styleElement="HEADER">Level 1</item>
-<item kind="text" styleElement="SUBHEADER">Level 2</item>
-<item kind="text" styleElement="HEADER">Nogmaals level 1</item>
-<item kind="text" styleElement="HEADER">Level 1 heeft stijl nummer 1</item>
-<item kind="text" styleElement="SUBHEADER">Level 2 heeft stijl nummer 2</item>
-<item kind="text" styleElement="PARAGRAPH">Zo ziet level 3 er uit</item>
-<item kind="text" styleElement="SUBPARAGRAPH">En dit is level 4</item>
+<title>JabberPoint XML-Demo</title>
+<item kind="text" level="1">Level 1</item>
+<item kind="text" level="2">Level 2</item>
+<item kind="text" level="1">Nogmaals level 1</item>
+<item kind="text" level="1">Level 1 heeft stijl nummer 1</item>
+<item kind="text" level="2">Level 2 heeft stijl nummer 2</item>
+<item kind="text" level="3">Zo ziet level 3 er uit</item>
+<item kind="text" level="4">En dit is level 4</item>
 </slide>
 <slide style="STANDARD">
-<item kind="text" styleElement="TITLE">De derde slide</item>
-<item kind="text" styleElement="HEADER">Om een nieuwe presentatie te openen,</item>
-<item kind="text" styleElement="SUBHEADER">gebruik File->Open uit het menu.</item>
-<item kind="text" styleElement="HEADER">Dit is het einde van de presentatie.</item>
-<item kind="image" styleElement="HEADER">JabberPoint.jpg</item>
+<title>JabberPoint XML-Demo</title>
+<item kind="text" level="1">De derde slide</item>
+<item kind="text" level="2">Om een nieuwe presentatie te openen,</item>
+<item kind="text" level="3">gebruik File->Open uit het menu.</item>
+<item kind="text" level="1">Dit is het einde van de presentatie.</item>
+<item kind="image" level="1">JabberPoint.jpg</item>
 </slide>
 </presentation>

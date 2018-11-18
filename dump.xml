@@ -3,7 +3,7 @@
 <presentation>
 <showtitle>XML-Based Presentation for Jabberpoint</showtitle>
 <slide>
-<title>TextItem[0,JabberPoint XML-Demo]</title>
+<title>JabberPoint XML-Demo</title>
 <item kind="text" level="1">Welkom bij Jabberpoint</item>
 <item kind="text" level="2">Copyright (c) 1996-2000 Ian Darwin</item>
 <item kind="text" level="2">Herschreven door</item>
@@ -15,11 +15,11 @@
 <item kind="text" level="2">Stoppen: q or Q</item>
 </slide>
 <slide>
-<title>TextItem[0,Een bijna lege slide]</title>
+<title>Een bijna lege slide</title>
 <item kind="text" level="1"> </item>
 </slide>
 <slide>
-<title>TextItem[0,Achtergrond]</title>
+<title>Achtergrond</title>
 <item kind="text" level="1">Jabberpoint is een oefening voor de</item>
 <item kind="text" level="1">cursus Design patterns van de Open universiteit</item>
 <item kind="text" level="1"> </item>
@@ -31,7 +31,7 @@
 <item kind="image" level="2">serclogo_fc.jpg</item>
 </slide>
 <slide>
-<title>TextItem[0,JabberPoint: Levels en stijlen]</title>
+<title>JabberPoint: Levels en stijlen</title>
 <item kind="text" level="1">Level 1</item>
 <item kind="text" level="2">Level 2</item>
 <item kind="text" level="1">A Jabberful Point</item>
@@ -40,7 +40,7 @@
 <item kind="text" level="4">En dit is level 4</item>
 </slide>
 <slide>
-<title>TextItem[0,Laatste slide]</title>
+<title>Laatste slide</title>
 <item kind="text" level="1">Navigatie kan ook via het menu</item>
 <item kind="text" level="2">Presentatie laden: File->Open</item>
 <item kind="text" level="1"> </item>
