@@ -5,9 +5,9 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.AccessorFactory;
+import Factories.AccessorFactory;
+import Factories.Writer;
 import model.Presentation;
-import model.Writer;
 
 /**
  * CommandSave

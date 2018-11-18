@@ -1,9 +1,11 @@
-package model;
+package Factories;
 
 import java.io.IOException;
 
-import model.PresentationFactory.SupportedPresentationTypes;
-import model.SlideFactory.SupportedSlideTypes;
+import Factories.PresentationFactory.SupportedPresentationTypes;
+import Factories.SlideFactory.SupportedSlideTypes;
+import model.Presentation;
+import model.Slide;
 
 /**
  * DemoReader

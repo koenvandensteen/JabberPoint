@@ -1,4 +1,4 @@
-package model;
+package Factories;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,10 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import model.PresentationFactory.SupportedPresentationTypes;
-import model.SlideFactory.SupportedSlideTypes;
+import Factories.PresentationFactory.SupportedPresentationTypes;
+import Factories.SlideFactory.SupportedSlideTypes;
+import model.Presentation;
+import model.Slide;
 
 /**
  * XMLReader

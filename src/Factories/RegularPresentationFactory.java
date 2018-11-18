@@ -1,4 +1,6 @@
-package model;
+package Factories;
+
+import model.Presentation;
 
 /**
  * RegularPresentationFactory

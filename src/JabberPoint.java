@@ -1,12 +1,12 @@
 
 import javax.swing.JOptionPane;
 
+import Factories.AccessorFactory;
 import controller.SlideViewer;
 
 import java.io.IOException;
 
 import view.SlideViewerFrame;
-import model.AccessorFactory;
 import model.Presentation;
 
 /**

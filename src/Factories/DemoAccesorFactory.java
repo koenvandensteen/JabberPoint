@@ -1,23 +1,23 @@
-package model;
+package Factories;
 
 /**
- * XMLAccessorFactory
+ * DemoAccesorFacotry
  * <p>
  * Concrete factory of the AccesorFactory abstract factory pattern. It makes it
- * possible to read XML data.
+ * possible to read demo data.
  * </p>
  */
 
-public class XMLAccessorFactory extends AccessorFactory {
+public class DemoAccesorFactory extends AccessorFactory {
 
 	@Override
 	public Reader CreateReader() {
-		return new XMLReader();
+		return new DemoReader();
 	}
 
 	@Override
 	public Writer CreateWriter() {
-		return new XMLWriter();
+		return new DemoWriter();
 	}
 
 }

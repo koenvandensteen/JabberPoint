@@ -1,9 +1,15 @@
-package model;
+package Factories;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
+
+import model.BitmapItem;
+import model.Presentation;
+import model.Slide;
+import model.SlideItem;
+import model.TextItem;
 
 /**
  * XMLWriter

@@ -1,4 +1,7 @@
-package model;
+package Factories;
+
+import model.BitmapItem;
+import model.SlideItem;
 
 /**
  * BitmapitemFactory

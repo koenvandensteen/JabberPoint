@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import model.AccessorFactory;
-import model.Reader;
+import Factories.AccessorFactory;
+import Factories.Reader;
 
 /**
  * CommandOpen

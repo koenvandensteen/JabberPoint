@@ -2,6 +2,8 @@ package model;
 
 import java.util.Vector;
 
+import Factories.SlideItemFactory;
+
 /**
  * <p>
  * Slide holds all the needed information to draw Slides.
