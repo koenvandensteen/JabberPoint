@@ -1,17 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE presentation SYSTEM "jabberpoint.dtd">
-<presentation style="CLASSIC">
-<showtitle>Demo Presentation</showtitle>
-<slide style="MODERN">
-<title>JabberPoint XML-Demo</title>
-<item kind="text" level="1">Het Java Presentatie Tool</item>
-<item kind="text" level="2">Copyright (c) 1996-2000: Ian Darwin</item>
-<item kind="text" level="2">Copyright (c) 2000-now:</item>
-<item kind="text" level="2">Gert Florijn en Sylvia Stuurman</item>
-<item kind="text" level="4">Aangepast door V. Boerjan en K. van den Steen</item>
-<item kind="text" level="4">JabberPoint aanroepen zonder bestandsnaam</item>
-<item kind="text" level="4">laat deze presentatie zien</item>
-<item kind="text" level="3">Navigeren:</item>
+<presentation>
+	<showtitle>XML-Based Presentation for Jabberpoint</showtitle>
+	<slide>
+		<title>JabberPoint XML-Demo</title>
+		<item kind="text"  level="1">Welkom bij Jabberpoint</item>
+		<item kind="text"  level="2">Copyright (c) 1996-2000 Ian Darwin</item>
+		<item kind="text"  level="2">Herschreven door</item>
+		<item kind="text"  level="2">Gert Florijn, Mark van Elswijk, Marc Evers</item>
+		<item kind="text"  level="2">en Sylvia Stuurman</item>
+		<item kind="text"  level="1">Navigatie:</item>		
 		<item kind="text" level="4">Volgende item*: down-arrow</item>
 		<item kind="text" level="4">Alle items*: right-arrow</item>
 	    <item kind="text" level="4">Vorige item**: up-arrow</item>
@@ -22,23 +20,40 @@
 	    <item kind="text" level="4">Stoppen: escape, q of Q</item>
 		<item kind="text" level="4">* als alle items weergegeven zijn zal de volgende slide geladen worden</item>
 		<item kind="text" level="4">** als er geen items zijn zal de vorige slide geladen worden</item>
-</slide>
-<slide style="CLASSIC">
-<title>JabberPoint XML-Demo</title>
-<item kind="text" level="1">Level 1</item>
-<item kind="text" level="2">Level 2</item>
-<item kind="text" level="1">Nogmaals level 1</item>
-<item kind="text" level="1">Level 1 heeft stijl nummer 1</item>
-<item kind="text" level="2">Level 2 heeft stijl nummer 2</item>
-<item kind="text" level="3">Zo ziet level 3 er uit</item>
-<item kind="text" level="4">En dit is level 4</item>
-</slide>
-<slide style="STANDARD">
-<title>JabberPoint XML-Demo</title>
-<item kind="text" level="1">De derde slide</item>
-<item kind="text" level="2">Om een nieuwe presentatie te openen,</item>
-<item kind="text" level="3">gebruik File->Open uit het menu.</item>
-<item kind="text" level="1">Dit is het einde van de presentatie.</item>
-<item kind="image" level="1">JabberPoint.jpg</item>
-</slide>
+		
+	</slide>
+	<slide>
+		<title>Een bijna lege slide</title>
+		<item kind="text"  level="1"> </item>
+	</slide>
+	<slide>
+		<title>Achtergrond</title>
+		<item kind="text"  level="1">Jabberpoint is een oefening voor de</item>
+		<item kind="text"  level="1">cursus Design patterns van de Open universiteit</item>
+		<item kind="text"  level="1"> </item>
+		<item kind="image"  level="2">logo-woordmerk_ou.gif</item>
+		<item kind="text"  level="1"> </item>
+		<item kind="text"  level="1">De oefening is ontwikeld door het SERC</item>
+		<item kind="text"  level="1">in samenwerking met de Open universiteit </item>
+		<item kind="text"  level="1"> </item>
+		<item kind="image"  level="2">serclogo_fc.jpg</item>
+	</slide>
+	<slide>
+		<title>JabberPoint: Levels en stijlen</title>
+		<item kind="text"  level="1">Level 1</item>
+		<item kind="text"  level="2">Level 2</item>
+		<item kind="text"  level="1">A Jabberful Point</item>
+		<item kind="text"  level="2">Level 2 heeft stijl 2</item>
+		<item kind="text"  level="3">Zo ziet de stijl van level 3 er uit</item>
+		<item kind="text"  level="4">En dit is level 4</item>
+	</slide>
+	<slide>
+		<title>Laatste slide</title>
+		<item kind="text"  level="1">Navigatie kan ook via het menu</item>
+		<item kind="text"  level="2">Presentatie laden: File->Open</item>
+		<item kind="text"  level="1"> </item>
+		<item kind="text"  level="1">Dit is het einde van de presentatie.</item>
+		<item kind="image"  level="1">JabberPoint.jpg</item>
+		<item kind="text"  level="1">Tot ziens.</item>
+	</slide>
 </presentation>
