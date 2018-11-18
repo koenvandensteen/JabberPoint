@@ -59,13 +59,6 @@ public class SlideViewer {
 		setSlideNumber(pageNumber - 1);
 	}
 
-	// go to given itemnr
-	public void goToItemNR() {
-		String ITEMNR = "Item number?";
-		int pageNumber = getIntegerField(ITEMNR);
-		setItemNumber(pageNumber);
-	}
-
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
 	public void clear() {
 		if (presentation != null) {
@@ -139,16 +132,6 @@ public class SlideViewer {
 	// exit
 	public void exit(int n) {
 		System.exit(n);
-	}
-
-	// shows a given number of items
-	public void setItemNumber(int n) {
-		if (n >= 0 && n < presentation.getCurrentSlide().getSize() - 1) {
-			presentation.getCurrentSlide().SetitemsToDraw(n);
-		} else {
-			showAll();
-		}
-		updateView();
 	}
 
 	// verander het huidige-slide-nummer en laat het aan het window weten.

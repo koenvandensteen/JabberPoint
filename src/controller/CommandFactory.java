@@ -70,10 +70,6 @@ public class CommandFactory {
 		return new CmdToggleAllItems(slideViewer);
 	}
 
-	public Command createAmountItemsCMD() {
-		return new CmdAmountItems(slideViewer);
-	}
-
 	public Command createNullCMD() {
 		return new NullCommand();
 	}

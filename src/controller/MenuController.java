@@ -147,15 +147,7 @@ public class MenuController extends MenuBar {
 				CommandInvoker.executeCommand(commandFactory.createToggleItemsCMD());
 			}
 		});
-		// show a number of items
-		viewMenu.add(menuItem = mkMenuItem(NUM_ITEMS));
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent actionEvent) {
-				CommandInvoker.executeCommand(commandFactory.createAmountItemsCMD());
-			}
-		});
 		add(viewMenu);
-
 		//
 		// HELP menu
 		//
