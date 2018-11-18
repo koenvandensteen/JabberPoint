@@ -1,9 +1,10 @@
 
 import javax.swing.JOptionPane;
 
+import controller.SlideViewer;
+
 import java.io.IOException;
 
-import view.SlideViewer;
 import view.SlideViewerFrame;
 import model.AccessorFactory;
 import model.Presentation;

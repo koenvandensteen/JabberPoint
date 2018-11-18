@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 import model.AccessorFactory;
 import model.Reader;
-import view.SlideViewer;
 
 /**
  * CommandOpen

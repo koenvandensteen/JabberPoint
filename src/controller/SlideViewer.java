@@ -1,15 +1,15 @@
-package view;
+package controller;
 
 import javax.swing.JOptionPane;
 import model.Presentation;
 import model.Slide;
+import view.SlideViewerComponent;
 
 /**
  * SlideViewer
  * <p>
  * The slide viewer holds a slideViewComponent and the current presentation. It
- * commands trough all our commands to the both the SlideViewComponent and the
- * presentation.
+ * it is the receiver from our command pattern.
  * </p>
  */
 
@@ -18,6 +18,12 @@ public class SlideViewer {
 	private SlideViewerComponent slideViewComponent;
 	private Presentation presentation;
 
+
+	public SlideViewer(Presentation presentation) {
+		clear();
+		this.presentation = presentation;
+	}
+	
 	public void SetPresentation(Presentation presentation) {
 		this.presentation = presentation;
 		slideViewComponent.SetPresentation(presentation);
@@ -27,10 +33,6 @@ public class SlideViewer {
 		return presentation;
 	}
 
-	public SlideViewer(Presentation presentation) {
-		clear();
-		this.presentation = presentation;
-	}
 
 	public void setShowView(SlideViewerComponent slideViewerComponent) {
 		this.slideViewComponent = slideViewerComponent;

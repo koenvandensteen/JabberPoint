@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import controller.CommandFactory;
 import controller.KeyController;
 import controller.MenuController;
+import controller.SlideViewer;
 
 /**
  * <p>

@@ -2,8 +2,6 @@ package controller;
 
 import java.awt.Frame;
 
-import view.SlideViewer;
-
 /**
  * CommandFactory
  * <p>

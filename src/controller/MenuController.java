@@ -8,8 +8,6 @@ import java.awt.MenuShortcut;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import view.SlideViewer;
-
 /**
  * <p>
  * The menu Controller

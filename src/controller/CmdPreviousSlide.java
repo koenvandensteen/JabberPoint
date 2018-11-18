@@ -1,7 +1,5 @@
 package controller;
 
-import view.SlideViewer;
-
 /**
  * CommandPreviousSlide
  * <p>
