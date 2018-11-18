@@ -141,13 +141,14 @@ private Presentation presentation;
 	
 	// shows a given number of items
 	public void setItemNumber(int n){
-		if(n >= 0 && n < presentation.getSize()-1){
-			presentation.getCurrentSlide().SetitemsToDraw(n);
+		if(n >= 0 && n < presentation.getCurrentSlide().getSize()-1){
+			presentation.getCurrentSlide().SetitemsToDraw(n);		
 		}
 		else
 		{
 			showAll();
 		}
+		updateView();
 	}
 	
 	// verander het huidige-slide-nummer en laat het aan het window weten.
@@ -177,14 +178,22 @@ private Presentation presentation;
 		
 	// helper function to request int input
 	private int getIntegerField(String arg){
-		String questionStr = JOptionPane.showInputDialog((Object)arg);
-		return Integer.parseInt(questionStr);
+		try{
+			String questionStr = JOptionPane.showInputDialog((Object)arg);
+			return Integer.parseInt(questionStr);
+		}		
+		catch(NumberFormatException exc){
+			System.out.println("only numeric input");
+			return -1;
+		}
 	}
 	
 	public void updateView(){
 		if (slideViewComponent != null) {
 			slideViewComponent.update(presentation.getTitle(), presentation.getCurrentSlide());
 		}
+		
+		
 	}
 	
 

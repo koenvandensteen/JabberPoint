@@ -12,7 +12,6 @@ public class CommandFactory {
 	public CommandFactory(Frame parent,SlideViewer slideViewer){
 		this.parent = parent;
 		this.slideViewer = slideViewer;
-		System.out.println("presentation weghalen? (ComFac)");
 	}
 	
 	public Command createNextSlideCMD(){
