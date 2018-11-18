@@ -18,7 +18,6 @@ public class SlideViewer {
 	private SlideViewerComponent slideViewComponent;
 	private Presentation presentation;
 
-
 	public SlideViewer(Presentation presentation) {
 		clear();
 		this.presentation = presentation;

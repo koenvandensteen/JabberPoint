@@ -3,6 +3,7 @@ package model;
 import java.awt.Rectangle;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 
 import model.Style;
 import view.ItemDrawerBridge;
@@ -30,11 +31,24 @@ public abstract class SlideItem {
 
 	protected ItemDrawerBridge itemDrawer;
 	protected StyleStrategy styleStrategy;
-
+	
+	protected ArrayList<SlideItem> SubItems = null;
+	
 	public SlideItem(int lev) {
 		level = lev;
+		SubItems = new ArrayList<SlideItem>();
 	}
 
+	public void AddSlideItem(SlideItem subitem)
+	{
+		SubItems.add(subitem);
+	}
+	
+	public ArrayList<SlideItem> GetSubItems()
+	{
+		return SubItems;
+	}
+	
 	public void SetItemStyle(Style style) {
 		itemStyle = style;
 	}

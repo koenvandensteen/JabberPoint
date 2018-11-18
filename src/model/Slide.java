@@ -56,7 +56,10 @@ public class Slide {
 
 	// Voeg een SlideItem toe
 	public void append(SlideItem anItem) {
-		items.addElement(anItem);
+		if(anItem.getLevel() == 1)
+			items.addElement(anItem);
+		else
+			items.get(items.size()-1).AddSlideItem(anItem);
 	}
 
 //	// geef de titel van de slide

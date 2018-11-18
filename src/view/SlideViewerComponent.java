@@ -101,8 +101,17 @@ public class SlideViewerComponent extends JComponent {
 			slideItem = slide.getSlideItems().elementAt(number);
 			slideItem.draw(0, y, scale, g, view);
 			y += slideItem.getBoundingBox(g, view, scale).height;
+			
+			for(int subNumber =0; subNumber < slideItem.GetSubItems().size();subNumber++)
+			{
+				SlideItem subslideItem = slideItem.GetSubItems().get(subNumber);
+				subslideItem.draw(0, y, scale, g, view);
+				y += subslideItem.getBoundingBox(g, view, scale).height;
+			}
 		}
 	}
+	
+
 
 	// geef de schaal om de slide te kunnen tekenen
 	private float getScale(Rectangle area) {
