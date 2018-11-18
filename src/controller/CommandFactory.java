@@ -30,11 +30,11 @@ public class CommandFactory {
 		return new CommandPreviousItem(slideViewer);
 	}
 	
-	public Command createShowAllCMD(){
+	public Command createShowAllOrNextCMD(){
 		return new CommandAllOrNext(slideViewer);
 	}
 	
-	public Command createClearItemsCMD(){
+	public Command createClearItemsOrBackCMD(){
 		return new CommandClearOrBack(slideViewer);
 	}
 	
@@ -68,6 +68,10 @@ public class CommandFactory {
 	
 	public Command createAmountItemsCMD(){
 		return new CommandAmountItems(slideViewer);
+	}
+	
+	public Command createNullCMD(){
+		return new NullCommand();
 	}
 
 }

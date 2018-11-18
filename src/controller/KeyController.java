@@ -23,6 +23,7 @@ public class KeyController extends KeyAdapter {
 	private Command clearItemsCommand;
 	private Command exitCommand;
 	private Command toggleCommand;
+	private Command nullCommand;
 
 	
 	public KeyController(CommandFactory comFac){
@@ -30,15 +31,16 @@ public class KeyController extends KeyAdapter {
 		prevSlideCommand = comFac.createPreviousSlideCMD();
 		nextItemCommand = comFac.createNextItemCMD();
 		prevItemCommand = comFac.createPreviousItemCMD();
-		allItemsCommand = comFac.createShowAllCMD();
-		clearItemsCommand = comFac.createClearItemsCMD();
+		allItemsCommand = comFac.createShowAllOrNextCMD();
+		clearItemsCommand = comFac.createClearItemsOrBackCMD();
 		exitCommand = comFac.createExitCMD();
 		toggleCommand = comFac.createToggleItemsCMD();
+		nullCommand = comFac.createNullCMD();
 	}
 
 	public void keyPressed(KeyEvent keyEvent) {
 		
-		Command selectedCommand = null;
+		Command selectedCommand;
 		
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:
@@ -63,6 +65,7 @@ public class KeyController extends KeyAdapter {
 				break;
 			case 'q':
 			case 'Q':
+			case KeyEvent.VK_ESCAPE:
 				//exit the application
 				selectedCommand = exitCommand;
 				break;
@@ -80,8 +83,8 @@ public class KeyController extends KeyAdapter {
 				selectedCommand = toggleCommand;
 				break; // wordt nooit bereikt als het goed is
 			default:
-				//indien toch bereikt gaan we voor een propere exit
-				selectedCommand = exitCommand;
+				//indien we een niet geregistreerde toets lezen voeren we een commando uit dat niets doet
+				selectedCommand = nullCommand;
 				break;
 		}
 		

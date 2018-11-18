@@ -45,16 +45,18 @@ public class MenuController extends MenuBar {
 	//menu expansion
 	protected static final String NEXT_ITEM = "Next item";
 	protected static final String PREV_ITEM = "Prev item";
-	protected static final String ALL_ITEM = "All items";
+	protected static final String ALL_ITEM = "All items/Next slide";
+	protected static final String CLR_ITEM = "Clear items/Prev slide";
 	protected static final String TOGGLE = "Toggle item navigation";
 	protected static final String NUM_ITEMS = "Display #items";
 	
-	//Commands	
+	//Commands
 	private Command nextSlideCommand;
 	private Command prevSlideCommand;
 	private Command nextItemCommand;
 	private Command prevItemCommand;
 	private Command showAllItemsCommand;
+	private Command clearAllItemsCommand;
 	private Command exitCommand;	
 	private Command slideNumCommand;
 	
@@ -75,7 +77,8 @@ public class MenuController extends MenuBar {
 		prevSlideCommand = comFac.createPreviousSlideCMD();
 		nextItemCommand = comFac.createNextItemCMD();
 		prevItemCommand = comFac.createPreviousItemCMD();
-		showAllItemsCommand = comFac.createShowAllCMD();
+		showAllItemsCommand = comFac.createShowAllOrNextCMD();
+		clearAllItemsCommand = comFac.createClearItemsOrBackCMD();
 		exitCommand = comFac.createExitCMD();
 		slideNumCommand = comFac.createSlideByNumberCMD();
 		
@@ -176,6 +179,14 @@ public class MenuController extends MenuBar {
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				Command c = showAllItemsCommand;
+				CommandInvoker.executeCommand(c);
+			}
+		});
+		//show all items
+		viewMenu.add(menuItem = mkMenuItem(CLR_ITEM));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				Command c = clearAllItemsCommand;
 				CommandInvoker.executeCommand(c);
 			}
 		});
