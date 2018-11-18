@@ -53,7 +53,7 @@ public class DemoReader extends Reader {
 		slide.append(2, "gebruik File->Open uit het menu.");
 		slide.append(1, " ");
 		slide.append(1, "Dit is het einde van de presentatie.");
-		slide.append(new BitmapItem(1, "JabberPoint.jpg"));
+		slide.append(SlideItemFactory.GetSlideItemFactory("image").CreateSlideItem(1, "JabberPoint.jpg"));
 		presentation.append(slide);
 		
 		return presentation;

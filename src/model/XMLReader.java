@@ -92,7 +92,9 @@ public class XMLReader extends Reader {
 			}
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
-		if (TEXT.equals(type)) {
+		slide.append(SlideItemFactory.GetSlideItemFactory(type).CreateSlideItem(level, item.getTextContent()));
+		
+		/*if (TEXT.equals(type)) {
 			slide.append(new TextItem(level, item.getTextContent())); //factory here
 		}
 		else {
@@ -102,7 +104,7 @@ public class XMLReader extends Reader {
 			else {
 				System.err.println(UNKNOWNTYPE);
 			}
-		}
+		}*/
 	}
 	
     private String getTitle(Element element, String tagName) {

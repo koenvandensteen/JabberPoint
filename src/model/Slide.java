@@ -76,7 +76,7 @@ public class Slide {
 
 	// Maak een TextItem van String, en voeg het TextItem toe
 	public void append(int level, String message) {
-		append(new TextItem(level, message));
+		append(SlideItemFactory.GetSlideItemFactory("text").CreateSlideItem(level, message));
 	}
 
 	// geef het betreffende SlideItem
