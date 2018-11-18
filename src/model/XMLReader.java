@@ -13,6 +13,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import model.PresentationFactory.SupportedPresentationTypes;
 import model.SlideFactory.SupportedSlideTypes;
 
 public class XMLReader extends Reader {
@@ -39,7 +40,8 @@ public class XMLReader extends Reader {
 	public Presentation Read(String fileName) throws IOException
 	{	
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
-		Presentation presentation = new Presentation();
+		//hard code to REGULARPRESENTATION if we got different types of slides we could add logic to the factory to support more and swap accordingly.
+		Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
 		try {
 
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    

@@ -2,13 +2,15 @@ package model;
 
 import java.io.IOException;
 
+import model.PresentationFactory.SupportedPresentationTypes;
 import model.SlideFactory.SupportedSlideTypes;
 
 public class DemoReader extends Reader {
 
 	@Override
 	public Presentation Read(String fileName) throws IOException {
-		Presentation presentation = new Presentation();
+		//hard code to REGULARPRESENTATION if we got different types of slides we could add logic to the factory to support more and swap accordingly.
+		Presentation presentation = PresentationFactory.GetFactory(SupportedPresentationTypes.REGULARPRESENTATION).CreatePresentation();
 		
 		presentation.setTitle("Demo Presentation");
 		//hard code to ITEMSLIDE if we got different types of slides we could add logic to the factory to support more and swap accordingly.
