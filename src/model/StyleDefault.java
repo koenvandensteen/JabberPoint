@@ -13,7 +13,7 @@ public class StyleDefault extends StyleStrategy {
 
 	private Style[] styles;
 
-	public Style getStyle(int level) {
+	private Style getStyle(int level) {
 		if (level >= styles.length) {
 			level = styles.length - 1;
 		}

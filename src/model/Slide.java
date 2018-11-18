@@ -62,11 +62,6 @@ public class Slide {
 			items.get(items.size()-1).AddSlideItem(anItem);
 	}
 
-//	// geef de titel van de slide
-//	public String getTitle() {
-//		/* Geef nu de tekst van het TextItem terug */
-//		return title.getText();
-//	}
 	public TextItem getTitle() {
 		return title;
 	}
