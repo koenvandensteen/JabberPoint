@@ -32,11 +32,9 @@ public class JabberPoint {
 
 		Presentation presentation;	
 		try {
-			if (argv.length == 0) { // een demo presentatie
-				presentation = AccessorFactory.GetFactory("").CreateReader().Read("");
-			} else {
-				presentation = AccessorFactory.GetFactory(".xml").CreateReader().Read(argv[0]);
-			}
+			//check if arg v is 0 if zero we know we want to load the demo.
+			String FileName = argv.length > 0 ? argv[0] : "demo";
+			presentation = AccessorFactory.GetFactory(FileName).CreateReader().Read(FileName);
 			SlideViewer slideViewer = new SlideViewer(presentation);
 			slideViewer.setSlideNumber(0);
 			new SlideViewerFrame(JABVERSION, slideViewer);

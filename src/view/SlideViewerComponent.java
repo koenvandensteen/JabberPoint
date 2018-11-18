@@ -44,11 +44,16 @@ public class SlideViewerComponent extends JComponent {
 
 	public SlideViewerComponent(JFrame frame, Presentation pres) {
 		setBackground(BGCOLOR); 
-		presentation = pres;
+		this.presentation = pres;
 		labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
 		this.frame = frame;
 	}
 
+	public void SetPresentation(Presentation pres)
+	{
+		this.presentation = pres;
+	}
+	
 	public Dimension getPreferredSize() {
 		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
 	}

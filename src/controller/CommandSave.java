@@ -25,8 +25,7 @@ public class CommandSave implements Command {
 	
 	@Override
 	public void execute() {
-		//we just hard code the XML factory here but could additional logic that just checks the file extension name and select a factory based on that.
-		Writer writer = AccessorFactory.GetFactory(".xml").CreateWriter();
+		Writer writer = AccessorFactory.GetFactory(SAVEFILE).CreateWriter();
 		try {
 			writer.Write(presentation, SAVEFILE);
 		} catch (IOException exc) {

@@ -26,7 +26,7 @@ public class CommandOpen implements Command {
 	@Override
 	public void execute() {
 		slideViewer.clear();
-		Reader reader = AccessorFactory.GetFactory(".xml").CreateReader() ;
+		Reader reader = AccessorFactory.GetFactory(TESTFILE).CreateReader() ;
 		try {
 			slideViewer.SetPresentation(reader.Read(TESTFILE));
 			slideViewer.setSlideNumber(0);

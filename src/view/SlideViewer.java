@@ -19,6 +19,7 @@ private Presentation presentation;
 	public void SetPresentation(Presentation presentation)
 	{
 		this.presentation = presentation;
+		slideViewComponent.SetPresentation(presentation);
 	}
 
 	public Presentation GetPresentation()
